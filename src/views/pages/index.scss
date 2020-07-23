@@ -1,4 +1,12 @@
 .index {
+  &-page {
+    position: relative;
+    .footer {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
   &__container {
     @include make-container($gutter: $grid-gutter-width);
     @include make-container-max-widths(
@@ -14,6 +22,7 @@
   }
 
   &__grid {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: $grid-gutter-width;
@@ -57,6 +66,18 @@
         color: $white;
         @extend .shadow-multiple;
       }
+    }
+  }
+
+  &__paralax {
+    position: absolute;
+    top: 15.4vh;
+    left: 30.6vw;
+
+    img {
+      display: block;
+      width: 30.5vw;
+      height: 62vh;
     }
   }
 }

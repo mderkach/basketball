@@ -7,6 +7,12 @@ block variables
 
 block content
   +fluid()
+    +pic('index__paralax', [
+          {
+            src: './assets/img/paralax.png',
+            media: 320
+          }
+        ])
     +wrapper('index')
       include ../modules/header/header
       .index__grid
@@ -23,3 +29,4 @@ block content
             a.index__nav-link(href="#") Гетто Баскет
             a.index__nav-link(href="#") Мировая серия
             a.index__nav-link(href="#") Массовый турнир
+    include ../modules/footer/footer

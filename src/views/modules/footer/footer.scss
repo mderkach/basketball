@@ -1,0 +1,65 @@
+.footer {
+  width: 100%;
+  padding: rem(42) 0 rem(47);
+  background-color: rgba($color: #110f02, $alpha: 0.75);
+
+  &__container {
+    @include make-container($gutter: $grid-gutter-width);
+    @include make-container-max-widths(
+      $max-widths: $container-max-widths,
+      $breakpoints: $grid-breakpoints
+    );
+  }
+
+  &__row {
+    @include make-row();
+  }
+
+  &__contacts {
+    @include make-col-ready();
+    @include make-col(6);
+
+    &:last-child {
+      text-align: right;
+    }
+
+    &-text {
+      color: $white;
+
+      margin-bottom: rem(26);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      a {
+        color: $white;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+
+    &-address {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &-link {
+      display: block;
+      margin-left: rem(12);
+      color: $white;
+      text-decoration: underline;
+
+      &:hover {
+        color: $white;
+      }
+    }
+
+    &-dev {
+      display: inline-block;
+      margin-left: rem(12);
+    }
+  }
+}

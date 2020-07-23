@@ -1,0 +1,19 @@
+.footer
+  +wrapper('footer')
+    .footer__contacts
+      p.footer__contacts-text.text-regular Email для связи:&nbsp;
+        a.inherit(href="mailto:info@site.ru") info@site.ru
+      p.footer__contacts-text.text-regular 2020. Все права защищены.&nbsp;
+        a.inherit(href="#") Политика конфеденциальности
+    .footer__contacts
+      .footer__contacts-address
+        p.footer__contacts-text.text-regular Адрес проведения: Воробьевы горы, площадка "Под Мостом"
+        a.footer__contacts-link.text-regular(href="#") На карту
+      p.footer__contacts-text.text-regular Разработка сайта
+        a.footer__contacts-dev(href="#")
+          +pic('', [
+            {
+              src: './assets/img/smg.png',
+              media: 320
+            }
+          ])
