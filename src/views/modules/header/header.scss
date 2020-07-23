@@ -1,0 +1,55 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: rem(5);
+
+  &__logo {
+    width: rem(88);
+    height: rem(92);
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+
+    &-link {
+      display: block;
+      margin-right: rem(46);
+      color: $white;
+
+      &:hover {
+        cursor: pointer;
+        color: $white;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      @include size($iconDefault);
+    }
+
+    &-link {
+      display: block;
+      margin-right: rem(13);
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__partners {
+    picture {
+      &:not(&:last-child) {
+        margin-right: rem(46);
+      }
+    }
+  }
+}

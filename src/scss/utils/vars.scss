@@ -1,0 +1,49 @@
+/* Vars:
+   ========================================================================== */
+
+// Font
+$mainFont: 'Roboto', sans-serif;
+$mainFontColor: #fff;
+
+// Size
+$iconDefault: 1.714rem; // 24 px
+//desktops
+$large_desktop: 1440px;
+$small_desktop: 1200px;
+//tablets
+$large_tablet: 992px;
+$small_tablet: 768px;
+//phones
+$large_mobile: 576px;
+$small_mobile: 460px;
+//core font
+$mainFontSize: 14px;
+$mainFontWeight: 400;
+$mainLineHeight: 1.15; //16px
+$boxHeight: $mainLineHeight;
+
+//bootstrap sizing
+$grid-gutter-width: 30px;
+$grid-columns: 12;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: $large_mobile,
+  md: $small_tablet,
+  lg: $large_tablet,
+  xl: $small_desktop,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 730px,
+  lg: 960px,
+  xl: 1170px,
+);
+
+$gutter: $grid-gutter-width / 2;
+
+//colors
+$white: #fff;
+$black: #000;
+$gray: #5d5d5d;

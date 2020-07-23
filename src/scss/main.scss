@@ -1,0 +1,37 @@
+@import 'utils/vars';
+@import 'utils/libs';
+@import 'utils/mixins';
+@import 'utils/fonts';
+@import 'utils/reset';
+@import 'utils/typography';
+
+// components
+@import '../views/components/**/*.scss';
+// modules
+@import '../views/modules/**/*.scss';
+//pages
+@import '../views/pages/**/*.scss';
+
+// global rules
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+}
+
+.is-modal-open {
+  overflow-y: hidden;
+}
+
+.overflow-scroll {
+  width: 100%;
+  margin: 0;
+
+  @include media-breakpoint-down('md') {
+    overflow-x: scroll;
+  }
+}

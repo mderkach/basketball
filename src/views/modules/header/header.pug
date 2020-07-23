@@ -1,0 +1,27 @@
+header.header
+  +icon('header__logo', 'logo')
+  nav.header__nav(role="navigation")
+    a.header__nav-link(href="#") Календарь активностей
+    a.header__nav-link(href="#") Прямая трансляция
+  nav.header__socials(role="navigation")
+    a.header__socials-link(href="#")
+      +icon('header__socials-icon', 'yt')
+    a.header__socials-link(href="#")
+      +icon('header__socials-icon', 'fb')
+    a.header__socials-link(href="#")
+      +icon('header__socials-icon', 'vk')
+    a.header__socials-link(href="#")
+      +icon('header__socials-icon', 'ig')
+  .header__partners
+    +pic('', [
+      {
+        src: './assets/img/mossport.png',
+        media: 320
+      }
+    ])
+    +pic('', [
+      {
+        src: './assets/img/streetbasket.png',
+        media: 320
+      }
+    ])

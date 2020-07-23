@@ -1,0 +1,18 @@
+mixin fluid()
+  section.fluid-wrapper
+    +pic('fluid-background', [
+      {
+        src: './assets/img/bg-1920.jpg',
+        media: 769
+      },
+      {
+        src: './assets/img/bg-768.jpg',
+        media: 576
+      },
+      {
+        src: './assets/img/bg-375.jpg',
+        media: 320
+      }
+    ])
+    if block
+      block

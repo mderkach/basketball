@@ -1,0 +1,9 @@
+.text {
+  &-link {
+    font-size: rem(14);
+    line-height: $mainLineHeight;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+}
