@@ -1,3 +1,10 @@
+.h1 {
+  font-weight: 900;
+  font-size: rem(96);
+  line-height: $mainLineHeight;
+  text-transform: uppercase;
+}
+
 .text {
   &-link {
     font-size: rem(14);
@@ -6,4 +13,20 @@
     letter-spacing: 0.03em;
     text-transform: uppercase;
   }
+}
+
+.shadow-red {
+  text-shadow: -8px -3px 0px $shadow2;
+}
+
+.shadow-blue {
+  text-shadow: 7px 6px 0px $shadow1;
+}
+
+.shadow-multiple {
+  text-shadow: 7px 6px 0px $shadow1, -8px -3px 0px $shadow2;
+}
+
+.inherit {
+  font-size: inherit;
 }
