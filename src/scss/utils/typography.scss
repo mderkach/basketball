@@ -3,6 +3,11 @@
   font-size: rem(96);
   line-height: $mainLineHeight;
   text-transform: uppercase;
+
+  @include media-breakpoint-down(md) {
+    font-size: rem(75);
+    line-height: $mainLineHeight;
+  }
 }
 
 .text {

@@ -5,6 +5,10 @@
   transition: transform 0.5s ease;
   z-index: 4;
 
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+
   img {
     display: block;
     width: 30.5vw;

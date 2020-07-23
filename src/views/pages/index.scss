@@ -45,6 +45,14 @@
     grid-column-end: 13;
     padding-top: rem(15);
     padding-left: rem(57);
+
+    @include media-breakpoint-down(lg) {
+      padding-left: 0;
+    }
+
+    @include media-breakpoint-down(md) {
+      grid-column-start: 7;
+    }
   }
 
   &__nav {
@@ -64,6 +72,10 @@
         margin-bottom: 0;
       }
 
+      @include media-breakpoint-down(lg) {
+        margin-bottom: rem(13);
+      }
+
       &:hover {
         text-decoration: none;
         color: $white;
@@ -79,6 +91,10 @@
       top: -24%;
       left: -43%;
       display: block;
+
+      @include media-breakpoint-down(lg) {
+        display: none;
+      }
     }
 
     &-yellow {
