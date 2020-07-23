@@ -1,0 +1,13 @@
+.paralax {
+  position: absolute;
+  top: 15.4vh;
+  left: 30.6vw;
+  transition: transform 0.5s ease;
+
+  img {
+    display: block;
+    width: 30.5vw;
+    height: 62vh;
+    transition: transform 0.5s;
+  }
+}

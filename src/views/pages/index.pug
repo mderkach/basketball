@@ -7,12 +7,7 @@ block variables
 
 block content
   +fluid()
-    +pic('index__paralax', [
-          {
-            src: './assets/img/paralax.png',
-            media: 320
-          }
-        ])
+    include ../components/paralax/paralax
     +wrapper('index')
       include ../modules/header/header
       .index__grid
