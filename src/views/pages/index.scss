@@ -29,11 +29,14 @@
   }
 
   &__main {
+    position: relative;
     grid-column-start: 1;
     grid-column-end: 7;
 
     &-header {
+      position: relative;
       color: $white;
+      z-index: 5;
     }
   }
 
@@ -66,6 +69,25 @@
         color: $white;
         @extend .shadow-multiple;
       }
+    }
+  }
+
+  &__wing {
+    &-yellow,
+    &-black {
+      position: absolute;
+      top: -24%;
+      left: -43%;
+      display: block;
+    }
+
+    &-yellow {
+      z-index: 1;
+    }
+
+    &-black {
+      left: -36%;
+      top: -30%;
     }
   }
 }

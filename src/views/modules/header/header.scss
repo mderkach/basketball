@@ -1,10 +1,12 @@
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   margin-bottom: rem(20);
   padding-top: rem(5);
+  z-index: 90;
 
   &__logo {
     width: rem(88);
