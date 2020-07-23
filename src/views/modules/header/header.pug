@@ -1,8 +1,17 @@
 header.header
   +icon('header__logo', 'logo')
   nav.header__nav(role="navigation")
-    a.header__nav-link(href="#") Календарь активностей
-    a.header__nav-link(href="#") Прямая трансляция
+    button.header__nav-button.hamburger.hamburger--collapse
+      span.hamburger-box
+        span.hamburger-inner
+    .header__nav-menu
+      a.header__nav-link(href="#") Календарь активностей
+      a.header__nav-link(href="#") Прямая трансляция
+      .header__nav-menu-separator
+      a.header__nav-link(href="#") Тренировки
+      a.header__nav-link(href="#") Гетто баскет
+      a.header__nav-link(href="#") Мировая серия
+      a.header__nav-link(href="#") Массовый турнир
   nav.header__socials(role="navigation")
     a.header__socials-link(href="#")
       +icon('header__socials-icon', 'yt')

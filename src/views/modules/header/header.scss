@@ -11,11 +11,64 @@
   &__logo {
     width: rem(88);
     height: rem(92);
+
+    @include media-breakpoint-down(lg) {
+      order: 2;
+    }
   }
 
   &__nav {
+    position: relative;
     display: flex;
     align-items: center;
+
+    @include media-breakpoint-down(lg) {
+      order: 1;
+    }
+
+    &-menu {
+      display: flex;
+      width: 100%;
+
+      @include media-breakpoint-down(lg) {
+        display: none;
+      }
+
+      &-separator {
+        display: none;
+
+        @include media-breakpoint-down(lg) {
+          display: block;
+          width: 100%;
+          margin-bottom: rem(24);
+          height: 1px;
+          background-color: $white;
+        }
+      }
+    }
+
+    &-button {
+      position: relative;
+      display: none;
+      padding: rem(6) rem(5);
+      z-index: 1;
+
+      @include media-breakpoint-down(lg) {
+        display: block;
+
+        &.is-active {
+          ~ .header__nav-menu {
+            position: absolute;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            width: 280px;
+            background-color: $black;
+            padding: rem(100) rem(16) rem(34);
+          }
+        }
+      }
+    }
 
     &-link {
       display: block;
@@ -27,12 +80,29 @@
         color: $white;
         text-decoration: none;
       }
+
+      @include media-breakpoint-down(lg) {
+        margin-right: 0;
+        margin-bottom: rem(19);
+      }
+
+      &:nth-child(n + 3) {
+        display: none;
+
+        @include media-breakpoint-down(lg) {
+          display: block;
+        }
+      }
     }
   }
 
   &__socials {
     display: flex;
     align-items: center;
+
+    @include media-breakpoint-down(lg) {
+      order: 4;
+    }
 
     &-icon {
       @include size($iconDefault);
@@ -49,6 +119,10 @@
   }
 
   &__partners {
+    @include media-breakpoint-down(lg) {
+      order: 3;
+    }
+
     picture {
       &:not(:last-child) {
         margin-right: rem(46);
