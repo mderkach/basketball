@@ -37,12 +37,21 @@
       justify-content: space-between;
     }
 
+    @include media-breakpoint-down(sm) {
+      flex-wrap: wrap;
+    }
+
     &-text {
       color: $white;
       margin-bottom: rem(26);
 
       @include media-breakpoint-down(lg) {
         margin-bottom: rem(18);
+      }
+
+      @include media-breakpoint-down(sm) {
+        text-align: center;
+        flex: 1 0 100%;
       }
 
       &:last-child {
@@ -82,6 +91,16 @@
         a {
           display: block;
           margin-left: 0;
+        }
+      }
+
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+        margin: rem(30) 0 rem(20);
+
+        a {
+          width: 100%;
+          text-align: center;
         }
       }
     }

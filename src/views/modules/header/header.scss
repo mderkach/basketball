@@ -8,12 +8,20 @@
   padding-top: rem(5);
   z-index: 90;
 
+  @include media-breakpoint-down(sm) {
+    flex-wrap: wrap;
+  }
+
   &__logo {
     width: rem(88);
     height: rem(92);
 
     @include media-breakpoint-down(lg) {
       order: 2;
+    }
+
+    @include media-breakpoint-down(sm) {
+      margin: 0 auto;
     }
   }
 
@@ -29,9 +37,13 @@
     &-menu {
       display: flex;
       width: 100%;
+      transition: transform 0.5s ease;
+      transform-origin: top left;
 
       @include media-breakpoint-down(lg) {
-        display: none;
+        height: 0;
+        width: 0;
+        transform: scale(0);
       }
 
       &-separator {
@@ -63,8 +75,15 @@
             display: flex;
             flex-direction: column;
             width: 280px;
+            height: auto;
             background-color: $black;
             padding: rem(50) rem(16) rem(34);
+            transform: scale(1);
+
+            @include media-breakpoint-down(sm) {
+              top: rem(-35);
+              padding-top: rem(100);
+            }
           }
         }
       }
@@ -77,7 +96,7 @@
 
       &:hover {
         cursor: pointer;
-        color: $white;
+        color: $shadow2;
         text-decoration: none;
       }
 
@@ -104,8 +123,68 @@
       order: 4;
     }
 
+    &-menu {
+      display: flex;
+      width: 100%;
+      transition: transform 0.5s ease;
+      transform-origin: top right;
+
+      @include media-breakpoint-down(sm) {
+        height: 0;
+        width: 0;
+        transform: scale(0);
+      }
+    }
+
+    &-button {
+      position: relative;
+      display: none;
+      padding: rem(6) rem(5);
+      z-index: 1;
+
+      .to-close {
+        display: none;
+      }
+
+      @include media-breakpoint-down(sm) {
+        display: block;
+
+        &.is-active {
+          .to-close {
+            display: block;
+          }
+
+          .to-open {
+            display: none;
+          }
+
+          ~ .header__socials-menu {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: flex;
+            flex-direction: row;
+            width: 280px;
+            height: auto;
+            background-color: $black;
+            padding: rem(50) rem(16) rem(34);
+            transform: scale(1);
+
+            .header__socials-icon {
+              @include size(rem(40));
+            }
+          }
+        }
+      }
+    }
+
     &-icon {
       @include size($iconDefault);
+      fill: $white;
+
+      &:hover {
+        fill: $shadow2;
+      }
     }
 
     &-link {
@@ -121,6 +200,14 @@
   &__partners {
     @include media-breakpoint-down(lg) {
       order: 3;
+    }
+
+    @include media-breakpoint-down(sm) {
+      order: 4 !important;
+      flex: 1 0 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: rem(16);
     }
 
     picture {

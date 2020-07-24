@@ -74,12 +74,9 @@ module.exports = {
             options: {
               plugins: [
                 { removeTitle: true },
-                { convertColors: { shorthex: false } },
-                { convertPathData: false },
               ],
             },
           },
-
           'svg-transform-loader',
         ],
       },

@@ -1,9 +1,14 @@
 .index {
   &-page {
     position: relative;
+
     .footer {
       position: absolute;
       bottom: 0;
+
+      @include media-breakpoint-down(sm) {
+        position: relative;
+      }
     }
   }
 
@@ -33,6 +38,10 @@
     grid-column-start: 1;
     grid-column-end: 7;
 
+    @include media-breakpoint-down(sm) {
+      grid-column-end: 13;
+    }
+
     &-header {
       position: relative;
       color: $white;
@@ -52,6 +61,11 @@
 
     @include media-breakpoint-down(md) {
       grid-column-start: 7;
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-column-start: 1;
+      margin-bottom: rem(30);
     }
   }
 
