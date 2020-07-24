@@ -1,0 +1,47 @@
+header.header-inner
+  +wrapper('header-inner')
+    .header-inner__top
+      +pic('', [
+        {
+          src: './assets/img/mossport.png',
+          media: 320
+        }
+      ])
+      +icon('header__logo', 'logo')
+      +pic('', [
+        {
+          src: './assets/img/streetbasket.png',
+          media: 320
+        }
+      ])
+      .header-inner__nav-wrapper
+        nav.header__nav(role="navigation")
+          button.header__nav-button.hamburger.hamburger--collapse
+            span.hamburger-box
+              span.hamburger-inner
+          .header__nav-menu
+            a.header__nav-link(href="#") Календарь активностей
+            a.header__nav-link(href="#") Прямая трансляция
+            .header__nav-menu-separator
+            a.header__nav-link(href="#") Тренировки
+            a.header__nav-link(href="#") Гетто баскет
+            a.header__nav-link(href="#") Мировая серия
+            a.header__nav-link(href="#") Массовый турнир
+        nav.header__socials(role="navigation")
+          button.header__socials-button
+            +icon('header__socials-icon to-open', 'msg')
+            +icon('header__socials-icon to-close', 'cls')
+          .header__socials-menu
+            a.header__socials-link(href="#")
+              +icon('header__socials-icon', 'yt')
+            a.header__socials-link(href="#")
+              +icon('header__socials-icon', 'fb')
+            a.header__socials-link(href="#")
+              +icon('header__socials-icon', 'vk')
+            a.header__socials-link(href="#")
+              +icon('header__socials-icon', 'ig')
+    nav.header-inner__nav_bottom(role="navigation")
+      a.header-inner__nav_bottom-link(href="#") Тренировки
+      a.header-inner__nav_bottom-link(href="#") Гетто Баскет
+      a.header-inner__nav_bottom-link(href="#") Мировая серия
+      a.header-inner__nav_bottom-link(href="#") Массовый турнир

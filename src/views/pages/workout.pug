@@ -1,0 +1,11 @@
+extends ../layout/inner
+
+block variables
+  - var title = 'basketball';
+  - var description = '';
+  - var slug = 'workout'
+  - var pageClass = slug + '-page';
+
+block content
+  section.workout
+    +wrapper('workout')
