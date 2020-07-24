@@ -24,7 +24,7 @@
 
     @include media-breakpoint-down(sm) {
       margin: 0 auto;
-      flex-basis: calc(100% - 34px - 36px);
+      flex-basis: 50%;
     }
   }
 
@@ -44,9 +44,7 @@
       transform-origin: top left;
 
       @include media-breakpoint-down(lg) {
-        height: 0;
-        width: 0;
-        transform: scale(0);
+        display: none;
       }
 
       &-separator {
@@ -81,10 +79,10 @@
             height: auto;
             background-color: $black;
             padding: rem(50) rem(16) rem(34);
-            transform: scale(1);
 
             @include media-breakpoint-down(sm) {
               top: rem(-35);
+              left: rem(-15);
               padding-top: rem(100);
             }
           }
@@ -137,9 +135,7 @@
       transform-origin: top right;
 
       @include media-breakpoint-down(sm) {
-        height: 0;
-        width: 0;
-        transform: scale(0);
+        display: none;
       }
     }
 
@@ -176,7 +172,6 @@
             height: auto;
             background-color: $black;
             padding: rem(50) rem(16) rem(34);
-            transform: scale(1);
 
             .header__socials-icon {
               @include size(rem(40));

@@ -103,6 +103,16 @@
           text-align: center;
         }
       }
+
+      + p {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        @include media-breakpoint-down(sm) {
+          justify-content: center;
+        }
+      }
     }
 
     &-link {
@@ -119,6 +129,11 @@
     &-dev {
       display: inline-block;
       margin-left: rem(12);
+
+      svg {
+        width: rem(140);
+        height: rem(16);
+      }
     }
   }
 }
