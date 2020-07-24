@@ -1,0 +1,74 @@
+.cards {
+  &-workout {
+    position: relative;
+    width: 100%;
+    padding: rem(5);
+    border: rem(8) solid $white;
+
+    &:hover {
+      border-color: $shadow2;
+    }
+
+    &__img {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: auto;
+      z-index: 2;
+    }
+
+    &__body {
+      padding-top: rem(13);
+      padding-bottom: rem(17);
+    }
+
+    &__name {
+      margin-bottom: rem(9);
+      font-size: rem(18);
+      line-height: $mainLineHeight;
+      text-align: center;
+      color: $white;
+    }
+
+    &__descr {
+      margin-bottom: rem(9);
+      font-size: rem(14);
+      line-height: $mainLineHeight;
+      text-align: center;
+      color: $white;
+    }
+
+    &__socials {
+      display: flex;
+      justify-content: center;
+
+      &-link {
+        @extend .header__socials-link;
+      }
+
+      &-icon {
+        @extend .header__socials-icon;
+      }
+    }
+
+    &__icon {
+      &-top {
+        position: absolute;
+        top: rem(-20);
+        right: rem(-55);
+        width: rem(92);
+        height: rem(89);
+        z-index: 1;
+      }
+
+      &-bottom {
+        position: absolute;
+        bottom: rem(-50);
+        left: 0;
+        width: rem(75);
+        height: rem(80);
+        transform: rotate(-58deg);
+      }
+    }
+  }
+}

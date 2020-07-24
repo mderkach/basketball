@@ -1,0 +1,36 @@
+.tabs-wrapper
+  .tabs-menu
+    button.tabs-menu__button
+      +icon('tabs-menu__icon_prev', 'tabp')
+    a.tabs-menu__link.is-active(href="#") Бросковые тренировки
+    a.tabs-menu__link(href="#") Женские тренировки
+    a.tabs-menu__link(href="#") детские тренировки
+    button.tabs-menu__button
+      +icon('tabs-menu__icon_next', 'tabn')
+  .tabs-tab
+    h2.tabs-tab__header Наши тренеры
+    .tabs-tab__content
+      +cardsWorkout('Грищенко Иван ','женские баскетбольные тренировки и знакомство с баскетболом',[
+        {
+          src: './assets/img/card-workout.jpg',
+          media: 320
+        }
+      ],'top')
+      +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+        {
+          src: './assets/img/card-placeholder.jpg',
+          media: 320
+        }
+      ],'bot')
+      +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+        {
+          src: './assets/img/card-placeholder.jpg',
+          media: 320
+        }
+      ],'top')
+      +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+        {
+          src: './assets/img/card-placeholder.jpg',
+          media: 320
+        }
+      ],'bot')

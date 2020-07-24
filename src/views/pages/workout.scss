@@ -1,4 +1,6 @@
 .workout {
+  padding-top: rem(34);
+
   &__container {
     @include make-container($gutter: $grid-gutter-width);
     @include make-container-max-widths(
@@ -11,5 +13,17 @@
 
   &__row {
     @include make-row();
+  }
+
+  &__text {
+    @include make-col-ready();
+    @include make-col(10);
+    @include make-col-offset(1);
+
+    padding: 0;
+    font-weight: bold;
+    font-size: rem(24);
+    line-height: $mainLineHeight;
+    color: $white;
   }
 }

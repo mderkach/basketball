@@ -1,0 +1,74 @@
+.tabs {
+  &-wrapper {
+    width: 100%;
+    margin-top: rem(33);
+  }
+
+  &-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: rem(50);
+    padding-bottom: rem(8);
+    border-bottom: 1px solid $white;
+
+    &__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(38);
+      height: rem(30);
+    }
+
+    &__icon {
+      &_next,
+      &_prev {
+        position: relative;
+        transform: rotate(-30deg);
+      }
+
+      &_next {
+        top: rem(-6);
+      }
+    }
+
+    &__link {
+      font-weight: 900;
+      font-size: rem(24);
+      line-height: $mainLineHeight;
+      text-transform: uppercase;
+      color: $white;
+
+      &.is-active {
+        font-size: rem(30);
+      }
+
+      &:hover {
+        color: $white;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &-tab {
+    width: 100%;
+
+    &__header {
+      font-weight: 900;
+      font-size: rem(30);
+      line-height: $mainLineHeight;
+      text-transform: uppercase;
+      color: $white;
+    }
+
+    &__content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: rem(30);
+      width: 100%;
+      padding-top: rem(30);
+      padding-bottom: rem(50);
+    }
+  }
+}
