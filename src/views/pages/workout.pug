@@ -8,9 +8,28 @@ block variables
 
 block content
   section.workout
-    +wrapper('workout')
+    +wrapper(slug)
       p.workout__text В рамках проекта «Баскетбол XXl» пройдет цикл специальных тренировок – Streetbasket Lab. Streetbasket Lab – это бесплатные тренировки для разного уровня подготовки, возраста и пола с ведущими тренерами Москвы и России.
       include ../modules/tabs/tabs
   section.workout__calendar
-    +wrapper('workout')
-      h2(style="color: #fff") h2
+    +wrapper(slug)
+      h2.h2 Календарь тренировок
+  section.workout__online
+    +wrapper(slug)
+      h2.h2 Онлайн
+      .workout__online-outer
+        .workout__online-video
+          video
+            source(src='' type='video/mp4')
+          .workout__online-video-info
+            p.p Онлайн трансляция
+            p.p Турнир между Команда1 - Команда 2
+            p.p Время: 00:23:00
+        .workout__online-video
+          video
+            source(src='' type='video/mp4')
+          .workout__online-video-info
+            p.p Запись трансляции
+            p.p Турнир между Команда1 - Команда 2
+            p.p Время: 00:23:00
+      a.workout__online-other(href="#") Посмотреть другие трансляции

@@ -10,6 +10,14 @@
   }
 }
 
+.h2 {
+  font-weight: 900;
+  font-size: rem(30);
+  line-height: $mainLineHeight;
+  text-transform: uppercase;
+  color: $white;
+}
+
 .text {
   &-link {
     font-size: rem(14);

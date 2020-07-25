@@ -26,4 +26,62 @@
     line-height: $mainLineHeight;
     color: $white;
   }
+
+  &__online {
+    padding: rem(54) 0;
+
+    &-outer {
+      @include make-col-ready();
+      @include make-col(12);
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(30);
+      padding: rem(30) 0;
+    }
+
+    &-video {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: rem(30) rem(20);
+      background-color: #000;
+      border: 5px solid $white;
+
+      video {
+        width: 100%;
+        height: 100%;
+      }
+
+      &-info {
+        position: absolute;
+        left: rem(20);
+        bottom: rem(30);
+
+        p {
+          margin-bottom: rem(8);
+          font-size: rem(14);
+          line-height: $mainLineHeight;
+          color: $white;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    &-other {
+      display: block;
+      margin: 0 auto;
+      font-size: rem(14);
+      line-height: $mainLineHeight;
+      color: $white;
+
+      &:hover {
+        text-decoration: none;
+        color: $white;
+      }
+    }
+  }
 }
