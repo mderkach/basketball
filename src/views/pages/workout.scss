@@ -84,4 +84,18 @@
       }
     }
   }
+
+  &__rent {
+    padding: rem(54) 0 rem(35);
+
+    &-outer {
+      @include make-col-ready();
+      @include make-col(12);
+
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: rem(30);
+      padding: rem(30) 0;
+    }
+  }
 }

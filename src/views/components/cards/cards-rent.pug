@@ -1,0 +1,5 @@
+mixin cardRent(name, pic)
+  .cards-rent
+    +pic('cards-rent__img', pic)
+    p.cards-rent__name !{ name }
+    a.cards-rent__request(href="#") Оставить заявку на аренду

@@ -33,3 +33,32 @@ block content
             p.p Турнир между Команда1 - Команда 2
             p.p Время: 00:23:00
       a.workout__online-other(href="#") Посмотреть другие трансляции
+  section.workout__rent.black-bg
+    +wrapper(slug)
+      h2.h2 Аренда оборудования
+      .workout__rent-outer
+        +cardRent('Брусья', [
+          {
+            src: './assets/img/rent1.jpg',
+            media: 320
+          }
+        ])
+        +cardRent('Брусья', [
+          {
+            src: './assets/img/rent1.jpg',
+            media: 320
+          }
+        ])
+        +cardRent('Шведская стенка', [
+          {
+            src: './assets/img/rent2.jpg',
+            media: 320
+          }
+        ])
+        +cardRent('Брусья', [
+          {
+            src: './assets/img/rent1.jpg',
+            media: 320
+          }
+        ])
+      a.workout__online-other(href="#") Посмотреть все оборудование
