@@ -1,13 +1,16 @@
 import Swiper from 'swiper';
 
 const tabs = {
-  slider: new Swiper(document.querySelector('.tabs-tab'), {
-    init: false,
-  }),
   navBtns: document.querySelectorAll('.tabs-menu__button'),
   navAnchors: document.querySelectorAll('.tabs-menu__link'),
   currentAnchor: undefined,
   tabs: document.querySelectorAll('.tabs-tab'),
+  isMobile: () => {
+    if (window.innerWidth <= 1199) {
+      return true;
+    }
+    return false;
+  },
   getCurrentTab: (arr) => {
     arr.forEach((item) => {
       if (item.classList.contains('is-active')) {
@@ -18,8 +21,51 @@ const tabs = {
   setCurrentTab: (arr, sibling) => {
     arr.forEach((elm) => {
       const tab = document.querySelector(sibling.getAttribute('href'));
+      const slider = new Swiper(tab.children[1], {
+        init: false,
+        loop: false,
+        speed: 400,
+        wrapperClass: tab.children[1].children[0].classList[0],
+        slideClass: tab.children[1].children[0].children[0].classList[0],
+        breakpoints: {
+          1200: {
+            slidesPerView: 4,
+            spaceBetween: 0,
+          },
+          576: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+          },
+        },
+        on: {
+          init: () => {
+            const navBtn = [tab.children[2].children[1], tab.children[2].children[0]];
+            navBtn.forEach((btn, index) => {
+              btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                if (index === 0) {
+                  slider.slideNext();
+                }
+
+                if (index === 1) {
+                  slider.slidePrev();
+                }
+              });
+            });
+          },
+        },
+      });
+
       if (elm === tab) {
         elm.classList.add('is-active');
+
+        if (tabs.isMobile()) slider.init();
       } else {
         elm.classList.remove('is-active');
       }
@@ -70,8 +116,8 @@ const tabs = {
       item.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        tabs.removeActiveClass(tabs.navAnchors);
         tabs.currentAnchor = item;
+        tabs.removeActiveClass(tabs.navAnchors);
         item.classList.add('is-active');
         tabs.setCurrentTab(tabs.tabs, item);
       });

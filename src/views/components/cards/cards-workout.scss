@@ -5,6 +5,11 @@
     padding: rem(5);
     border: rem(8) solid $white;
 
+    @include media-breakpoint-down(lg) {
+      flex-shrink: 0;
+      transition-property: transform;
+    }
+
     &:hover {
       border-color: $shadow2;
     }
@@ -15,6 +20,10 @@
       width: 100%;
       height: auto;
       z-index: 2;
+
+      img {
+        width: 100%;
+      }
     }
 
     &__body {

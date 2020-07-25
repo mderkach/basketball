@@ -62,6 +62,7 @@
   }
 
   &-tab {
+    position: relative;
     display: none;
     width: 100%;
     flex: 1 0 100%;
@@ -90,6 +91,47 @@
       width: 100%;
       padding-top: rem(30);
       padding-bottom: rem(50);
+
+      @include media-breakpoint-down(lg) {
+        position: relative;
+        box-sizing: content-box;
+        display: flex;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        transition-property: transform;
+        gap: unset;
+        z-index: 1;
+      }
+
+      &-outer {
+        @extend .swiper-container;
+        @include media-breakpoint-down(lg) {
+          max-width: 570/720 * 100%;
+          margin: 0 auto;
+        }
+      }
+    }
+
+    &__navigation {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: none;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 rem(4);
+      transform: translateY(-50%);
+      z-index: 2;
+
+      @include media-breakpoint-down(lg) {
+        display: flex;
+      }
+
+      &_prev,
+      &_next {
+        @extend .tabs-menu__button;
+      }
     }
   }
 }
