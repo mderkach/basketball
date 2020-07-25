@@ -1,36 +1,92 @@
 .tabs-wrapper
   .tabs-menu
-    button.tabs-menu__button
+    button.tabs-menu__button.tabs-menu__button_prev
       +icon('tabs-menu__icon_prev', 'tabp')
-    a.tabs-menu__link.is-active(href="#") Бросковые тренировки
-    a.tabs-menu__link(href="#") Женские тренировки
-    a.tabs-menu__link(href="#") детские тренировки
-    button.tabs-menu__button
+    .tabs-menu__link_wrapper
+      a.tabs-menu__link.is-active(href="#throw") Бросковые тренировки
+      a.tabs-menu__link(href="#women") Женские тренировки
+      a.tabs-menu__link(href="#child") детские тренировки
+    button.tabs-menu__button.tabs-menu__button_next
       +icon('tabs-menu__icon_next', 'tabn')
-  .tabs-tab
-    h2.tabs-tab__header Наши тренеры
-    .tabs-tab__content
-      +cardsWorkout('Грищенко Иван ','женские баскетбольные тренировки и знакомство с баскетболом',[
-        {
-          src: './assets/img/card-workout.jpg',
-          media: 320
-        }
-      ],'top')
-      +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-        {
-          src: './assets/img/card-placeholder.jpg',
-          media: 320
-        }
-      ],'bot')
-      +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-        {
-          src: './assets/img/card-placeholder.jpg',
-          media: 320
-        }
-      ],'top')
-      +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-        {
-          src: './assets/img/card-placeholder.jpg',
-          media: 320
-        }
-      ],'bot')
+  .tabs-tab__wrapper
+    .tabs-tab#throw
+      h2.tabs-tab__header Наши тренеры
+      .tabs-tab__content
+        +cardsWorkout('Грищенко Иван ','женские баскетбольные тренировки и знакомство с баскетболом',[
+          {
+            src: './assets/img/card-workout.jpg',
+            media: 320
+          }
+        ],'top')
+        +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+          {
+            src: './assets/img/card-placeholder.jpg',
+            media: 320
+          }
+        ],'bot')
+        +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+          {
+            src: './assets/img/card-placeholder.jpg',
+            media: 320
+          }
+        ],'top')
+        +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+          {
+            src: './assets/img/card-placeholder.jpg',
+            media: 320
+          }
+        ],'bot')
+    .tabs-tab#women
+      h2.tabs-tab__header Женские тренеры
+      .tabs-tab__content
+        +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+          {
+            src: './assets/img/card-placeholder.jpg',
+            media: 320
+          }
+        ],'bot')
+        +cardsWorkout('Грищенко Иван ','женские баскетбольные тренировки и знакомство с баскетболом',[
+          {
+            src: './assets/img/card-workout.jpg',
+            media: 320
+          }
+        ],'top')
+        +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+          {
+            src: './assets/img/card-placeholder.jpg',
+            media: 320
+          }
+        ],'top')
+        +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+          {
+            src: './assets/img/card-placeholder.jpg',
+            media: 320
+          }
+        ],'bot')
+    .tabs-tab#child
+      h2.tabs-tab__header Детксие тренеры
+      .tabs-tab__content
+        +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+          {
+            src: './assets/img/card-placeholder.jpg',
+            media: 320
+          }
+        ],'bot')
+        +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+          {
+            src: './assets/img/card-placeholder.jpg',
+            media: 320
+          }
+        ],'top')
+        +cardsWorkout('Грищенко Иван ','женские баскетбольные тренировки и знакомство с баскетболом',[
+          {
+            src: './assets/img/card-workout.jpg',
+            media: 320
+          }
+        ],'top')
+        +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+          {
+            src: './assets/img/card-placeholder.jpg',
+            media: 320
+          }
+        ],'bot')

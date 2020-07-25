@@ -1,3 +1,5 @@
+@import 'node_modules/swiper/swiper';
+
 .tabs {
   &-wrapper {
     width: 100%;
@@ -48,11 +50,30 @@
         color: $white;
         text-decoration: none;
       }
+
+      &_wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 rem(20);
+      }
     }
   }
 
   &-tab {
+    display: none;
     width: 100%;
+    flex: 1 0 100%;
+
+    &.is-active {
+      display: block;
+    }
+
+    &__wrapper {
+      display: flex;
+      overflow: hidden;
+    }
 
     &__header {
       font-weight: 900;
