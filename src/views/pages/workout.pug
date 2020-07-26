@@ -6,6 +6,21 @@ block variables
   - var slug = 'workout'
   - var pageClass = slug + '-page';
 
+block background
+  +pic(slug + '-background', [
+    {
+      src: './assets/img/bg-inner.jpg',
+      media: 1200
+    },
+    {
+      src: './assets/img/bg-inner-768.jpg',
+      media: 768,
+    },
+    {
+      src: './assets/img/bg-inner-320.jpg',
+      media: 320,
+    },
+  ])
 block content
   section.workout
     +wrapper(slug)
@@ -66,10 +81,16 @@ block content
     .workout__order-outer.black-bg
       +wrapper(slug)
         .workout__order-inner
-          +pic('workout__order-img', [{
-            src: './assets/img/ball.png',
-            media: 320,
-          }])
+          +pic('workout__order-img', [
+            {
+              src: './assets/img/ball.png',
+              media: 1200,
+            },
+            {
+              src: './assets/img/ball-768.png',
+              media: 320,
+            },
+          ])
           .workout__order-form-wrapper
             include ../components/form/form
   section.workout__partners

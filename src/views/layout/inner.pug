@@ -10,7 +10,8 @@ html(lang='ru')
     meta(name="description", content=description)
     block head
 
-  body(class=pageClass, style='background-image: url(./assets/img/bg-inner.jpg)')
+  body(class=pageClass)
+    block background
     block header
       include ../modules/header/headerInner
     block content

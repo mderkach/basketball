@@ -1,5 +1,19 @@
 .header-inner {
   padding-top: rem(15);
+
+  @include media-breakpoint-down(lg) {
+    display: none;
+  }
+
+  &__mobile {
+    display: none;
+    width: 100%;
+
+    @include media-breakpoint-down(lg) {
+      display: block;
+    }
+  }
+
   &__container {
     @include make-container($gutter: $grid-gutter-width);
     @include make-container-max-widths(
@@ -41,6 +55,14 @@
       width: 100%;
       margin-top: rem(36);
 
+      @include media-breakpoint-down(lg) {
+        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 585 / 730 * 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
       &-link {
         font-weight: 900;
         font-size: rem(30);
@@ -48,10 +70,15 @@
         text-transform: uppercase;
         color: $white;
 
-        &:hover {
+        &:hover,
+        &.is-active {
           color: $white;
           text-decoration: none;
           text-shadow: 2px 2px 0px $shadow1, -1px -2px 0px $shadow2;
+        }
+
+        @include media-breakpoint-down(lg) {
+          margin-bottom: rem(8);
         }
       }
     }

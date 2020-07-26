@@ -41,7 +41,15 @@ header.header-inner
             a.header__socials-link(href="#")
               +icon('header__socials-icon', 'ig')
     nav.header-inner__nav_bottom(role="navigation")
-      a.header-inner__nav_bottom-link(href="#") Тренировки
+      a.header-inner__nav_bottom-link.is-active(href="#") Тренировки
+      a.header-inner__nav_bottom-link(href="#") Гетто Баскет
+      a.header-inner__nav_bottom-link(href="#") Мировая серия
+      a.header-inner__nav_bottom-link(href="#") Массовый турнир
+.header-inner__mobile
+  +wrapper('header-inner')
+    include ./header
+    nav.header-inner__nav_bottom(role="navigation")
+      a.header-inner__nav_bottom-link.is-active(href="#") Тренировки
       a.header-inner__nav_bottom-link(href="#") Гетто Баскет
       a.header-inner__nav_bottom-link(href="#") Мировая серия
       a.header-inner__nav_bottom-link(href="#") Массовый турнир
