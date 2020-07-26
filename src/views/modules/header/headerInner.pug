@@ -16,9 +16,6 @@ header.header-inner
       ])
       .header-inner__nav-wrapper
         nav.header__nav(role="navigation")
-          button.header__nav-button.hamburger.hamburger--collapse
-            span.hamburger-box
-              span.hamburger-inner
           .header__nav-menu
             a.header__nav-link(href="#") Календарь активностей
             a.header__nav-link(href="#") Прямая трансляция
@@ -28,9 +25,6 @@ header.header-inner
             a.header__nav-link(href="#") Мировая серия
             a.header__nav-link(href="#") Массовый турнир
         nav.header__socials(role="navigation")
-          button.header__socials-button
-            +icon('header__socials-icon to-open', 'msg')
-            +icon('header__socials-icon to-close', 'cls')
           .header__socials-menu
             a.header__socials-link(href="#")
               +icon('header__socials-icon', 'yt')

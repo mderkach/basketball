@@ -73,6 +73,7 @@
           ~ .header__nav-menu {
             position: absolute;
             top: 0;
+            left: rem(-15);
             display: flex;
             flex-direction: column;
             width: 280px;
@@ -82,7 +83,6 @@
 
             @include media-breakpoint-down(sm) {
               top: rem(-35);
-              left: rem(-15);
               padding-top: rem(100);
             }
           }
@@ -165,7 +165,7 @@
           ~ .header__socials-menu {
             position: absolute;
             top: 0;
-            right: 0;
+            right: rem(-15);
             display: flex;
             flex-direction: row;
             width: 280px;
