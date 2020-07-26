@@ -22,7 +22,7 @@ const tabs = {
     arr.forEach((elm) => {
       const tab = document.querySelector(sibling.getAttribute('href'));
       const slider = new Swiper(tab.children[1], {
-        // init: false,
+        init: false,
         loop: true,
         spaceBetween: 30,
         speed: 400,
@@ -63,6 +63,7 @@ const tabs = {
 
       if (elm === tab) {
         elm.classList.add('is-active');
+        slider.init();
       } else {
         elm.classList.remove('is-active');
       }

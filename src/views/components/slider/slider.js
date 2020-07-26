@@ -5,8 +5,6 @@ const slider = {
   buildSlider: (container) => {
     const selector = `.${container.children[0].classList[1]}`;
     const sldr = new Swiper(selector, {
-      observer: true,
-      observeParents: true,
       loop: true,
       spaceBetween: 30,
       speed: 400,
