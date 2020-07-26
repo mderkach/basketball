@@ -1,0 +1,106 @@
+.cards {
+  &-calendar {
+    position: relative;
+    width: 100%;
+    padding: rem(9) rem(5) rem(12);
+    background-color: $white;
+    border-radius: 0px rem(25) rem(25) rem(25);
+    z-index: 1;
+
+    &.has-info {
+      background-color: #27ae60;
+
+      .cards-calendar-day,
+      .cards-calendar-date,
+      .cards-calendar__info-time,
+      .cards-calendar__info-name {
+        color: $white;
+      }
+
+      .cards-calendar-big {
+        text-align: center;
+        color: rgba($color: $white, $alpha: 0.05);
+      }
+    }
+
+    &:hover {
+      background-color: #ab009a;
+      transform: scale(1.5);
+      filter: drop-shadow(4px 4px 25px rgba(0, 0, 0, 0.5));
+      z-index: 2;
+
+      .cards-calendar-day,
+      .cards-calendar-date {
+        color: $white;
+        transform: scale(0.8) translateX(-12px);
+      }
+
+      .cards-calendar-big {
+        text-align: center;
+        color: rgba($color: $white, $alpha: 0.05);
+        transform: scale(0.8) translateX(-12px);
+      }
+
+      .cards-calendar__info-time,
+      .cards-calendar__info-name {
+        color: $white;
+        transform: scale(0.8) translateX(-12px);
+      }
+    }
+
+    &-month {
+      font-size: rem(14);
+      line-height: $mainLineHeight;
+      mix-blend-mode: normal;
+    }
+
+    &-day {
+      color: #000;
+      text-transform: uppercase;
+      mix-blend-mode: normal;
+    }
+
+    &-date {
+      margin-bottom: rem(14);
+      font-weight: bold;
+      font-size: rem(18);
+      line-height: $mainLineHeight;
+      text-transform: uppercase;
+      color: #000;
+      mix-blend-mode: normal;
+
+      &-big {
+        position: absolute;
+        left: rem(8);
+        bottom: rem(12);
+        margin-left: rem(-8);
+        font-weight: 900;
+        font-size: rem(100);
+        line-height: $mainLineHeight;
+        letter-spacing: -0.1em;
+        color: rgba($color: #000, $alpha: 0.05);
+      }
+    }
+
+    &__info {
+      position: relative;
+      height: rem(90);
+      z-index: 0;
+
+      &-time,
+      &-name {
+        font-size: rem(12);
+        line-height: $mainLineHeight;
+        color: #000;
+      }
+
+      &-time {
+        margin-bottom: rem(3);
+      }
+
+      &-name {
+        margin-bottom: rem(8);
+      }
+    }
+  }
+}

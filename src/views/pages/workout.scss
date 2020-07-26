@@ -29,10 +29,7 @@
 
   &__container {
     @include make-container($gutter: $grid-gutter-width);
-    @include make-container-max-widths(
-      $max-widths: $container-max-widths,
-      $breakpoints: $grid-breakpoints
-    );
+    @include make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints);
 
     position: relative;
   }

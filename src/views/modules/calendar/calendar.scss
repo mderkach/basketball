@@ -1,0 +1,26 @@
+.calendar {
+  padding: rem(35) 0 rem(54);
+
+  &__container {
+    @include make-container($gutter: $grid-gutter-width);
+    @include make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints);
+
+    position: relative;
+  }
+
+  &__row {
+    @include make-row();
+  }
+
+  &-grid {
+    @include make-col-ready();
+    @include make-col(12);
+
+    display: grid;
+    grid-template-columns: repeat(10, 110px);
+    gap: 20px 8px;
+    width: 100%;
+    margin-top: rem(30);
+    padding: 0;
+  }
+}

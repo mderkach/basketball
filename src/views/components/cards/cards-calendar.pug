@@ -1,0 +1,19 @@
+mixin cardCalendar(month, day, date, info)
+  - month = false || month
+  - info = false || info
+
+  .cards-calendar(
+    class= info ? 'has-info' : false
+  )
+    .cards-calendar__header
+      if date
+        p.cards-calendar-month !{ month }
+      p.cards-calendar-day !{ day }
+      p.cards-calendar-date !{ date }
+      p.cards-calendar-date-big !{ date }
+    .cards-calendar__info
+      if info
+        each item, index in info
+          if index < 2
+            p.cards-calendar__info-time !{ item.time }
+            p.cards-calendar__info-name !{ item.name }

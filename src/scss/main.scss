@@ -1,16 +1,16 @@
-@import 'utils/vars';
-@import 'utils/libs';
-@import 'utils/mixins';
-@import 'utils/fonts';
-@import 'utils/reset';
-@import 'utils/typography';
+@import "utils/vars";
+@import "utils/libs";
+@import "utils/mixins";
+@import "utils/fonts";
+@import "utils/reset";
+@import "utils/typography";
 
 // components
-@import '../views/components/**/*.scss';
+@import "../views/components/**/*.scss";
 // modules
-@import '../views/modules/**/*.scss';
+@import "../views/modules/**/*.scss";
 //pages
-@import '../views/pages/**/*.scss';
+@import "../views/pages/**/*.scss";
 
 // global rules
 html {
@@ -31,7 +31,7 @@ button {
   width: 100%;
   margin: 0;
 
-  @include media-breakpoint-down('md') {
+  @include media-breakpoint-down("md") {
     overflow-x: scroll;
   }
 }
