@@ -12,6 +12,45 @@
     @include make-row();
   }
 
+  &__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    &-controls {
+      display: flex;
+      justify-content: space-between;
+      width: 425 / 1170 * 100%;
+
+      &-prev,
+      &-next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: rem(38);
+        height: rem(30);
+
+        svg {
+          position: relative;
+          transform: rotate(-30deg);
+        }
+      }
+
+      &-next {
+        svg {
+          top: rem(-6);
+        }
+      }
+    }
+
+    &-info {
+      font-size: rem(18);
+      line-height: $mainLineHeight;
+      color: $white;
+    }
+  }
+
   &-grid {
     @include make-col-ready();
     @include make-col(12);

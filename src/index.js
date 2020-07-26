@@ -13,9 +13,11 @@ import paralax from './views/components/paralax/paralax';
 import header from './views/modules/header/header';
 import tabs from './views/modules/tabs/tabs';
 import slider from './views/components/slider/slider';
+import calendar from './views/modules/calendar/calendar';
 
 // init
 header.init();
 paralax.init();
 tabs.init();
 slider.init();
+calendar.init();

@@ -1,6 +1,13 @@
 section.calendar.black-bg
   +wrapper('calendar')
-    h2.h2 Календарь тренировок
+    .calendar__heading
+      h2.h2 Календарь тренировок
+      .calendar__heading-controls
+        button.calendar__heading-controls-prev
+          +icon('', 'tabp')
+        p.calendar__heading-info 23 июля - 31 августа 2020 г.
+        button.calendar__heading-controls-next
+          +icon('', 'tabn')
     .calendar-grid
       +cardCalendar('', 'Воскресенье', 26, [
         {
