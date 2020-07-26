@@ -28,6 +28,12 @@
   }
 }
 
+.p {
+  font-size: rem(14);
+  line-height: $mainLineHeight;
+  color: $white;
+}
+
 .shadow-red {
   text-shadow: -8px -3px 0px $shadow2;
 }

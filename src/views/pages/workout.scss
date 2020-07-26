@@ -36,7 +36,7 @@
 
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: rem(30);
+      gap: $grid-gutter-width;
       padding: rem(30) 0;
     }
 
@@ -94,8 +94,46 @@
 
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: rem(30);
+      gap: $grid-gutter-width;
       padding: rem(30) 0;
+    }
+  }
+
+  &__order {
+    padding: rem(42) 0;
+
+    &-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: $grid-gutter-width;
+    }
+
+    &-form {
+      &-wrapper {
+        grid-column-start: 7;
+        grid-column-end: 12;
+      }
+    }
+
+    &-img {
+      position: absolute;
+      top: -59%; //196 px
+      left: -13.3%; //155 px
+      display: block;
+      width: 100%;
+      max-width: 785px;
+    }
+  }
+
+  &__partners {
+    padding: rem(78 - 42) 0 rem(54);
+
+    &-wrapper {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: $grid-gutter-width;
+      margin-top: rem(34);
     }
   }
 }

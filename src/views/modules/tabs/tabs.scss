@@ -87,7 +87,7 @@
     &__content {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: rem(30);
+      gap: $grid-gutter-width;
       width: 100%;
       padding-top: rem(30);
       padding-bottom: rem(50);

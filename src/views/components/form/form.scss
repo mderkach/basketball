@@ -1,0 +1,46 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: rem(39) 0 rem(46);
+
+  &-input {
+    display: block;
+    width: 100%;
+    margin-bottom: rem(14);
+    padding: rem(13) rem(17);
+    color: #000;
+    background-color: $white;
+
+    &::placeholder {
+      color: #bdbdbd;
+    }
+  }
+
+  &-submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 258 / 470 * 100%;
+    padding: rem(18) 0 rem(17);
+    font-size: rem(12);
+    line-height: $mainLineHeight;
+    text-transform: uppercase;
+    color: $white;
+    background-color: $shadow2;
+
+    &:hover {
+      text-decoration: none;
+      color: $white;
+      background-color: #36a9e1;
+    }
+  }
+
+  &-header {
+    margin-bottom: rem(10);
+  }
+
+  &-descr {
+    margin-bottom: rem(13);
+  }
+}

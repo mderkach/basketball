@@ -62,3 +62,41 @@ block content
           }
         ])
       a.workout__online-other(href="#") Посмотреть все оборудование
+  section.workout__order
+    .workout__order-outer.black-bg
+      +wrapper(slug)
+        .workout__order-inner
+          +pic('workout__order-img', [{
+            src: './assets/img/ball.png',
+            media: 320,
+          }])
+          .workout__order-form-wrapper
+            include ../components/form/form
+  section.workout__partners
+    +wrapper(slug)
+      h2.h2 Партнеры
+      .workout__partners-wrapper
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])
