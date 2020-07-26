@@ -4,14 +4,18 @@
 import './js/*';
 // SCSS
 import './scss/main.scss';
-import paralax from './views/components/paralax/paralax';
-import header from './views/modules/header/header';
-import tabs from './views/modules/tabs/tabs';
 
 // CSS (example)
 // import './assets/css/main.css'
 
 // components
+import paralax from './views/components/paralax/paralax';
+import header from './views/modules/header/header';
+import tabs from './views/modules/tabs/tabs';
+import slider from './views/components/slider/slider';
+
+// init
 header.init();
 paralax.init();
 tabs.init();
+slider.init();

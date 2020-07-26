@@ -5,12 +5,12 @@ const tabs = {
   navAnchors: document.querySelectorAll('.tabs-menu__link'),
   currentAnchor: undefined,
   tabs: document.querySelectorAll('.tabs-tab'),
-  isMobile: () => {
-    if (window.innerWidth <= 1199) {
-      return true;
-    }
-    return false;
-  },
+  // isMobile: () => {
+  //   if (window.innerWidth <= 1199) {
+  //     return true;
+  //   }
+  //   return false;
+  // },
   getCurrentTab: (arr) => {
     arr.forEach((item) => {
       if (item.classList.contains('is-active')) {
@@ -22,19 +22,18 @@ const tabs = {
     arr.forEach((elm) => {
       const tab = document.querySelector(sibling.getAttribute('href'));
       const slider = new Swiper(tab.children[1], {
-        init: false,
-        loop: false,
+        // init: false,
+        loop: true,
+        spaceBetween: 30,
         speed: 400,
         wrapperClass: tab.children[1].children[0].classList[0],
         slideClass: tab.children[1].children[0].children[0].classList[0],
         breakpoints: {
           1200: {
             slidesPerView: 4,
-            spaceBetween: 0,
           },
           576: {
             slidesPerView: 2,
-            spaceBetween: 30,
           },
           320: {
             slidesPerView: 1,
@@ -64,8 +63,6 @@ const tabs = {
 
       if (elm === tab) {
         elm.classList.add('is-active');
-
-        if (tabs.isMobile()) slider.init();
       } else {
         elm.classList.remove('is-active');
       }

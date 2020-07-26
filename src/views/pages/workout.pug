@@ -51,7 +51,7 @@ block content
   section.workout__rent.black-bg
     +wrapper(slug)
       h2.h2 Аренда оборудования
-      .workout__rent-outer
+      +slider('workout__rent-outer')
         +cardRent('Брусья', [
           {
             src: './assets/img/rent1.jpg',
@@ -96,7 +96,7 @@ block content
   section.workout__partners
     +wrapper(slug)
       h2.h2 Партнеры
-      .workout__partners-wrapper
+      +slider('workout__partners-wrapper')
         +pic('workout__partners-img', [
           {
             src: './assets/img/partner.jpg',

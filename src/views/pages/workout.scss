@@ -4,6 +4,13 @@
   &-page {
     position: relative;
     overflow: hidden;
+
+    @include media-breakpoint-down(sm) {
+      section {
+        padding-left: $gutter;
+        padding-right: $gutter;
+      }
+    }
   }
 
   &-background {
@@ -67,6 +74,10 @@
       grid-template-columns: repeat(2, 1fr);
       gap: $grid-gutter-width;
       padding: rem(30) 0;
+
+      @include media-breakpoint-down(lg) {
+        grid-template-columns: 1fr;
+      }
     }
 
     &-video {
@@ -121,9 +132,9 @@
       @include make-col-ready();
       @include make-col(12);
 
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: $grid-gutter-width;
+      // display: grid;
+      // grid-template-columns: repeat(4, 1fr);
+      // gap: $grid-gutter-width;
       padding: rem(30) 0;
     }
   }
@@ -136,6 +147,10 @@
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: $grid-gutter-width;
+
+      @include media-breakpoint-down(sm) {
+        display: flex;
+      }
     }
 
     &-form {
@@ -148,6 +163,11 @@
         @include media-breakpoint-down(lg) {
           grid-column-start: 1;
           grid-column-end: 7;
+        }
+
+        @include media-breakpoint-down(sm) {
+          grid-column-start: 1;
+          grid-column-end: 13;
         }
       }
     }
@@ -166,6 +186,19 @@
         top: -12%;
         right: -11%;
       }
+
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+
+    &-outer {
+      @include media-breakpoint-down(sm) {
+        margin-left: -$gutter;
+        margin-right: -$gutter;
+        padding-left: $gutter;
+        padding-right: $gutter;
+      }
     }
   }
 
@@ -173,10 +206,20 @@
     padding: rem(78 - 42) 0 rem(54);
 
     &-wrapper {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: $grid-gutter-width;
-      margin-top: rem(34);
+      // display: grid;
+      // grid-template-columns: repeat(4, 1fr);
+      // gap: $grid-gutter-width;
+      padding: rem(34) 0;
+    }
+
+    &-img {
+      position: relative;
+      flex-shrink: 0;
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
     }
   }
 }

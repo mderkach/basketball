@@ -1,6 +1,7 @@
 .cards {
   &-workout {
     position: relative;
+    flex-shrink: 0;
     width: 100%;
     padding: rem(5);
     border: rem(8) solid $white;

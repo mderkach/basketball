@@ -1,3 +1,5 @@
+@import './header';
+
 .header-inner {
   padding-top: rem(15);
 
@@ -61,6 +63,13 @@
         max-width: 585 / 730 * 100%;
         margin-left: auto;
         margin-right: auto;
+      }
+
+      @include media-breakpoint-down(sm) {
+        justify-content: flex-start;
+        max-width: 100%;
+        padding-left: $gutter;
+        padding-right: $gutter;
       }
 
       &-link {

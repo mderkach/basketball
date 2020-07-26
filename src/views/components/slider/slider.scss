@@ -1,0 +1,58 @@
+@import 'node_modules/swiper/swiper';
+
+.slider {
+  &-outer {
+    position: relative;
+    width: 100%;
+  }
+
+  &-container {
+    @extend .swiper-container;
+
+    @include media-breakpoint-down(lg) {
+      max-width: 570/720 * 100%;
+      margin: 0 auto;
+    }
+  }
+
+  &-wrapper {
+    @extend .swiper-wrapper;
+  }
+
+  &-prev,
+  &-next {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(38);
+    height: rem(30);
+  }
+
+  &-icon {
+    &_next,
+    &_prev {
+      position: relative;
+      transform: rotate(-30deg);
+    }
+
+    &_next {
+      top: rem(-6);
+    }
+  }
+
+  &-navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: none;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 rem(4);
+    transform: translateY(-50%);
+    z-index: 2;
+
+    @include media-breakpoint-down(lg) {
+      display: flex;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+mixin slider(classname, wrapper)
+  - classname = false || classname
+  - wrapper = false || wrapper
+  .slider-outer
+    .slider-container(class=classname)
+      .slider-wrapper(class=wrapper)
+        if block
+          block
+    .slider-navigation
+      button.slider-prev
+        +icon('slider-icon_prev', 'tabp')
+      button.slider-next
+        +icon('slider-icon_next', 'tabn')

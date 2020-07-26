@@ -34,6 +34,10 @@
       color: $white;
       background-color: #36a9e1;
     }
+
+    @include media-breakpoint-down(sm) {
+      width: 258 / 340 * 100%;
+    }
   }
 
   &-header {
