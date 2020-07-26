@@ -47,6 +47,7 @@
     &-info {
       font-size: rem(18);
       line-height: $mainLineHeight;
+      text-align: center;
       color: $white;
     }
   }
@@ -56,10 +57,20 @@
     @include make-col(12);
 
     display: grid;
-    grid-template-columns: repeat(10, 110px);
-    gap: 20px 8px;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 20px 6px;
     width: 100%;
     margin-top: rem(30);
     padding: 0;
+
+    @include media-breakpoint-down(lg) {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
   }
 }
