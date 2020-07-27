@@ -44,32 +44,8 @@ block content
           id: 'child',
           header: 'Дети'
         }
-      ])
-        +slider('tabs-tab__content-outer', 'tabs-tab__content')
-          +cardsWorkout('Грищенко Иван ','женские баскетбольные тренировки и знакомство с баскетболом',[
-            {
-              src: './assets/img/card-workout.jpg',
-              media: 320
-            }
-          ],'top')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'bot')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'top')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'bot')
+      ], true)
+
   include ../modules/calendar/calendar
   section.workout__online
     +wrapper(slug)

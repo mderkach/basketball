@@ -48,6 +48,11 @@
     grid-row-start: 1;
     grid-row-end: 1;
 
+    @include media-breakpoint-down(lg) {
+      grid-column-start: 1;
+      grid-column-end: 13;
+    }
+
     &_wrapper {
       width: 100%;
       display: grid;
@@ -55,12 +60,26 @@
       grid-auto-rows: calc(446px / 2);
       gap: 0 rem(30);
       padding: rem(32) 0 rem(75);
+
+      @include media-breakpoint-down(lg) {
+        grid-template-rows: 200px;
+        padding: rem(20) 0;
+      }
+
+      @include media-breakpoint-down(md) {
+        display: flex;
+        flex-direction: column;
+      }
     }
 
     &-btn-wrapper {
       display: flex;
       justify-content: center;
       padding-bottom: rem(62);
+
+      @include media-breakpoint-down(lg) {
+        padding-bottom: rem(20);
+      }
 
       a {
         max-width: rem(258);
@@ -77,6 +96,23 @@
     grid-row-start: 1;
     grid-row-end: 3;
 
+    @include media-breakpoint-down(lg) {
+      grid-column-start: 5;
+      grid-column-end: 9;
+      grid-row-start: 2;
+      grid-row-end: 4;
+    }
+
+    @include media-breakpoint-down(md) {
+      width: 50%;
+      margin: 0 auto rem(30);
+    }
+
+    @include media-breakpoint-down(md) {
+      width: 75%;
+      margin: 0 auto rem(30);
+    }
+
     img,
     picture {
       width: 100%;
@@ -86,6 +122,15 @@
     &-info {
       width: 330 / 770 * 100%;
       margin-left: $grid-gutter-width;
+
+      @include media-breakpoint-down(lg) {
+        width: auto;
+      }
+
+      @include media-breakpoint-down(sm) {
+        width: 100% !important;
+        margin-left: 0;
+      }
 
       .training__text,
       .p {
@@ -103,6 +148,17 @@
         grid-column-end: 9;
         grid-row-start: 2;
         grid-row-end: 2;
+
+        @include media-breakpoint-down(lg) {
+          grid-column-start: 1;
+          grid-column-end: 13;
+          grid-row-start: 4;
+          grid-row-end: 4;
+        }
+
+        @include media-breakpoint-down(sm) {
+          flex-direction: column;
+        }
       }
 
       &_text {
@@ -114,6 +170,11 @@
         p {
           margin-bottom: 0;
           text-transform: uppercase;
+        }
+
+        @include media-breakpoint-down(sm) {
+          width: 100%;
+          margin-bottom: rem(20);
         }
       }
 

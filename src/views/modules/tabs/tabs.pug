@@ -1,4 +1,5 @@
-mixin tabs(items)
+mixin tabs(items, hasSlider)
+  - hasSlider = false || hasSlider
   .tabs-wrapper
     .tabs-menu
       button.tabs-menu__button.tabs-menu__button_prev
@@ -20,3 +21,29 @@ mixin tabs(items)
           h2.tabs-tab__header !{ tab.header }
           if block
             block
+          if hasSlider
+            +slider('tabs-tab__content-outer', 'tabs-tab__content')
+              +cardsWorkout('Грищенко Иван ','женские баскетбольные тренировки и знакомство с баскетболом',[
+                {
+                  src: './assets/img/card-workout.jpg',
+                  media: 320
+                }
+              ],'top')
+              +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+                {
+                  src: './assets/img/card-placeholder.jpg',
+                  media: 320
+                }
+              ],'bot')
+              +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+                {
+                  src: './assets/img/card-placeholder.jpg',
+                  media: 320
+                }
+              ],'top')
+              +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+                {
+                  src: './assets/img/card-placeholder.jpg',
+                  media: 320
+                }
+              ],'bot')

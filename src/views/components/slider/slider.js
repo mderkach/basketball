@@ -1,15 +1,15 @@
-import { Swiper } from 'swiper';
+import Swiper from 'swiper';
 
 const slider = {
   wrapper: document.querySelectorAll('.slider-outer'),
   buildSlider: (container) => {
-    const selector = `.${container.children[0].classList[1]}`;
+    const selector = `.${container.querySelector('.slider-container').classList[1]}`;
     const sldr = new Swiper(selector, {
       loop: true,
       spaceBetween: 30,
       speed: 400,
-      wrapperClass: container.children[0].children[0].classList[0],
-      slideClass: container.children[0].children[0].children[0].classList[0],
+      wrapperClass: container.querySelector('.slider-wrapper').classList[0],
+      slideClass: container.querySelector('.slider-wrapper').children[0].classList[0],
       breakpoints: {
         1200: {
           slidesPerView: 4,
@@ -24,18 +24,18 @@ const slider = {
       },
       on: {
         init: () => {
-          const navBtn = [container.children[1].children[1], container.children[1].children[0]];
+          const navBtn = container.querySelector('.slider-navigation').querySelectorAll('button');
           navBtn.forEach((btn, index) => {
             btn.addEventListener('click', (e) => {
               e.preventDefault();
               e.stopPropagation();
 
               if (index === 0) {
-                sldr.slideNext();
+                sldr.slidePrev();
               }
 
               if (index === 1) {
-                sldr.slidePrev();
+                sldr.slideNext();
               }
             });
           });
