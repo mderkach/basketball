@@ -1,4 +1,6 @@
-import Swiper from 'swiper';
+import { Swiper, Navigation } from 'swiper';
+
+Swiper.use([Navigation]);
 
 const slider = {
   wrapper: document.querySelectorAll('.slider-outer'),
@@ -22,24 +24,9 @@ const slider = {
           spaceBetween: 0,
         },
       },
-      on: {
-        init: () => {
-          const navBtn = container.querySelector('.slider-navigation').querySelectorAll('button');
-          navBtn.forEach((btn, index) => {
-            btn.addEventListener('click', (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-
-              if (index === 0) {
-                sldr.slidePrev();
-              }
-
-              if (index === 1) {
-                sldr.slideNext();
-              }
-            });
-          });
-        },
+      navigation: {
+        nextEl: container.querySelector('.slider-next'),
+        prevEl: container.querySelector('.slider-prev'),
       },
     });
 
