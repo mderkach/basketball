@@ -1,19 +1,26 @@
-mixin cardsWorkout(name, descr, pic, bubblesPos)
-  .cards-workout
+mixin cardsWorkout(name, descr, pic, bubblesPos, modClass)
+  - name = name || false
+  - descr = descr || false
+  .cards-workout(
+    class= modClass ? modClass : false
+  )
     if (bubblesPos === 'top')
       +icon('cards-workout__icon-top', 'cardt')
     if (bubblesPos === 'bot')
       +icon('cards-workout__icon-bottom', 'cardb')
     +pic('cards-workout__img', pic)
-    .cards-workout__body
-      p.cards-workout__name #{ name }
-      p.cards-workout__descr !{ descr }
-      .cards-workout__socials
-        a.cards-workout__socials-link(href="#")
-          +icon('cards-workout__socials-icon', 'yt')
-        a.cards-workout__socials-link(href="#")
-          +icon('cards-workout__socials-icon', 'fb')
-        a.cards-workout__socials-link(href="#")
-          +icon('cards-workout__socials-icon', 'vk')
-        a.cards-workout__socials-link(href="#")
-          +icon('cards-workout__socials-icon', 'ig')
+    if (name && descr)
+      .cards-workout__body
+        if (!name === false)
+          p.cards-workout__name #{ name }
+        if (!descr === false)
+          p.cards-workout__descr !{ descr }
+          .cards-workout__socials
+            a.cards-workout__socials-link(href="#")
+              +icon('cards-workout__socials-icon', 'yt')
+            a.cards-workout__socials-link(href="#")
+              +icon('cards-workout__socials-icon', 'fb')
+            a.cards-workout__socials-link(href="#")
+              +icon('cards-workout__socials-icon', 'vk')
+            a.cards-workout__socials-link(href="#")
+              +icon('cards-workout__socials-icon', 'ig')
