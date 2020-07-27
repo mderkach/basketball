@@ -26,7 +26,7 @@
     }
 
     &:hover {
-      background-color: #ab009a;
+      cursor: pointer;
       transform: scale(1.5);
       filter: drop-shadow(4px 4px 25px rgba(0, 0, 0, 0.5));
       z-index: 2;
@@ -34,7 +34,7 @@
       .cards-calendar-day,
       .cards-calendar-date,
       .cards-calendar-month {
-        color: $white;
+        // color: $white;
         transform: scale(0.8) translateX(-12px);
       }
 
@@ -46,7 +46,7 @@
 
       .cards-calendar__info-time,
       .cards-calendar__info-name {
-        color: $white;
+        // color: $white;
         transform: scale(0.8) translateX(-12px);
       }
 

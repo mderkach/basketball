@@ -1,7 +1,8 @@
-mixin slider(classname, wrapper)
+mixin slider(classname, wrapper, container)
   - classname = false || classname
   - wrapper = false || wrapper
-  .slider-outer
+  - container = false || container
+  .slider-outer(class=container)
     .slider-container(class=classname)
       .slider-wrapper(class=wrapper)
         if block

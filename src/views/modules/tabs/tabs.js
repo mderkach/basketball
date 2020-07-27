@@ -1,16 +1,8 @@
-import Swiper from 'swiper';
-
 const tabs = {
   navBtns: document.querySelectorAll('.tabs-menu__button'),
   navAnchors: document.querySelectorAll('.tabs-menu__link'),
   currentAnchor: undefined,
   tabs: document.querySelectorAll('.tabs-tab'),
-  // isMobile: () => {
-  //   if (window.innerWidth <= 1199) {
-  //     return true;
-  //   }
-  //   return false;
-  // },
   getCurrentTab: (arr) => {
     arr.forEach((item) => {
       if (item.classList.contains('is-active')) {
@@ -21,49 +13,9 @@ const tabs = {
   setCurrentTab: (arr, sibling) => {
     arr.forEach((elm) => {
       const tab = document.querySelector(sibling.getAttribute('href'));
-      const slider = new Swiper(tab.children[1], {
-        init: false,
-        loop: true,
-        spaceBetween: 30,
-        speed: 400,
-        wrapperClass: tab.children[1].children[0].classList[0],
-        slideClass: tab.children[1].children[0].children[0].classList[0],
-        breakpoints: {
-          1200: {
-            slidesPerView: 4,
-          },
-          576: {
-            slidesPerView: 2,
-          },
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 0,
-          },
-        },
-        on: {
-          init: () => {
-            const navBtn = [tab.children[2].children[1], tab.children[2].children[0]];
-            navBtn.forEach((btn, index) => {
-              btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-
-                if (index === 0) {
-                  slider.slideNext();
-                }
-
-                if (index === 1) {
-                  slider.slidePrev();
-                }
-              });
-            });
-          },
-        },
-      });
 
       if (elm === tab) {
         elm.classList.add('is-active');
-        slider.init();
       } else {
         elm.classList.remove('is-active');
       }

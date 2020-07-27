@@ -1,4 +1,4 @@
-@import 'node_modules/swiper/swiper';
+@import "node_modules/swiper/swiper";
 
 .tabs {
   &-wrapper {
@@ -91,18 +91,28 @@
   }
 
   &-tab {
-    position: relative;
-    display: none;
+    position: absolute;
+    // display: none;
+    top: 0;
+    right: -10000px;
     width: 100%;
     flex: 1 0 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    transform: rotateY(180deg);
 
     &.is-active {
+      position: relative;
+      right: 0;
+      top: 0;
       display: block;
+      transform: rotateY(360deg);
     }
 
     &__wrapper {
       display: flex;
       overflow: hidden;
+      perspective: 1000px;
     }
 
     &__header {

@@ -1,110 +1,22 @@
-.tabs-wrapper
-  .tabs-menu
-    button.tabs-menu__button.tabs-menu__button_prev
-      +icon('tabs-menu__icon_prev', 'tabp')
-    .tabs-menu__link_wrapper
-      a.tabs-menu__link.is-active(href="#throw") Бросковые тренировки
-      a.tabs-menu__link(href="#women") Женские тренировки
-      a.tabs-menu__link(href="#child") детские тренировки
-    button.tabs-menu__button.tabs-menu__button_next
-      +icon('tabs-menu__icon_next', 'tabn')
-  .tabs-tab__wrapper
-    .tabs-tab#throw
-      h2.tabs-tab__header Наши тренеры
-      .tabs-tab__content-outer
-        .tabs-tab__content
-          +cardsWorkout('Грищенко Иван ','женские баскетбольные тренировки и знакомство с баскетболом',[
-            {
-              src: './assets/img/card-workout.jpg',
-              media: 320
-            }
-          ],'top')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'bot')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'top')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'bot')
-      .tabs-tab__navigation
-        button.tabs-tab__navigation_prev
-          +icon('tabs-menu__icon_prev', 'tabp')
-        button.tabs-tab__navigation_next
-          +icon('tabs-menu__icon_next', 'tabn')
-    .tabs-tab#women
-      h2.tabs-tab__header Женщины
-      .tabs-tab__content-outer
-        .tabs-tab__content
-          +cardsWorkout('Грищенко Иван ','женские баскетбольные тренировки и знакомство с баскетболом',[
-            {
-              src: './assets/img/card-workout.jpg',
-              media: 320
-            }
-          ],'top')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'bot')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'top')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'bot')
-      .tabs-tab__navigation
-        button.tabs-tab__navigation_prev
-          +icon('tabs-menu__icon_prev', 'tabp')
-        button.tabs-tab__navigation_next
-          +icon('tabs-menu__icon_next', 'tabn')
-    .tabs-tab#child
-      h2.tabs-tab__header Дети
-      .tabs-tab__content-outer
-        .tabs-tab__content
-          +cardsWorkout('Грищенко Иван ','женские баскетбольные тренировки и знакомство с баскетболом',[
-            {
-              src: './assets/img/card-workout.jpg',
-              media: 320
-            }
-          ],'top')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'bot')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'top')
-          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
-            {
-              src: './assets/img/card-placeholder.jpg',
-              media: 320
-            }
-          ],'bot')
-      .tabs-tab__navigation
-        button.tabs-tab__navigation_prev
-          +icon('tabs-menu__icon_prev', 'tabp')
-        button.tabs-tab__navigation_next
-          +icon('tabs-menu__icon_next', 'tabn')
+mixin tabs(items)
+  .tabs-wrapper
+    .tabs-menu
+      button.tabs-menu__button.tabs-menu__button_prev
+        +icon('tabs-menu__icon_prev', 'tabp')
+      .tabs-menu__link_wrapper
+        each tab in items
+          a.tabs-menu__link(
+            class= tab.isActive ? 'is-active' : false
+            href= '#' + tab.id
+          ) !{ tab.label }
+      button.tabs-menu__button.tabs-menu__button_next
+        +icon('tabs-menu__icon_next', 'tabn')
+    .tabs-tab__wrapper
+      each tab, index in items
+        .tabs-tab(
+            class= tab.isActive ? 'is-active' : false,
+            id=tab.id
+          )
+          h2.tabs-tab__header !{ tab.header }
+          if block
+            block

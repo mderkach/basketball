@@ -1,4 +1,4 @@
-import Swiper from 'swiper';
+import { Swiper } from 'swiper';
 
 const slider = {
   wrapper: document.querySelectorAll('.slider-outer'),
