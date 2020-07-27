@@ -1,0 +1,18 @@
+section.screen-order
+  .screen-order-outer.black-bg
+    +wrapper(slug)
+      .screen-order-inner
+        +pic('screen-order-img', [
+          {
+            src: './assets/img/player.png',
+            media: 1200,
+          },
+          {
+            src: './assets/img/player-768.png',
+            media: 320,
+          },
+        ])
+        .screen-order-info-wrapper
+          .screen-order-info
+            h2.form-header.h2 Заявки на участие принимаются на сайте streetbasket.ru
+            a.form-submit(href="#") Оставить заявку на участие

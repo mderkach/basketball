@@ -1,0 +1,59 @@
+extends ../layout/inner
+
+block variables
+  - var title = 'basketball';
+  - var description = '';
+  - var slug = 'ghetto'
+  - var pageClass = slug + '-page';
+
+block background
+  +pic(slug + '-background', [
+    {
+      src: './assets/img/bg-inner-ghetto.jpg',
+      media: 1200
+    },
+    {
+      src: './assets/img/bg-inner-ghetto-768.jpg',
+      media: 768,
+    },
+    {
+      src: './assets/img/bg-inner-ghetto-320.jpg',
+      media: 320,
+    },
+  ])
+block content
+  section.ghetto
+    +wrapper(slug)
+      p.workout__text
+        |Не турнир, не чемпионат. В нем не будет одного победителя, никто не попадает ни в какие финалы и прочее. Это просто спортивная тусовка под музыку. Обычная игра, как каждый вечер, только еще призы светят.
+      p.workout__text
+        |Ghetto Basket - каждый четверг с 18:00 до 22:00.
+  include ../modules/calendar/calendar
+  section.workout__partners
+    +wrapper(slug)
+      h2.h2 Партнеры
+      +slider('workout__partners-wrapper')
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])

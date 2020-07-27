@@ -18,10 +18,19 @@
     align-items: center;
     width: 100%;
 
+    @include media-breakpoint-down(sm) {
+      flex-wrap: wrap;
+    }
+
     &-controls {
       display: flex;
       justify-content: space-between;
       width: 425 / 1170 * 100%;
+
+      @include media-breakpoint-down(sm) {
+        width: 100%;
+        margin-top: rem(34);
+      }
 
       &-prev,
       &-next {

@@ -1,0 +1,73 @@
+.screen {
+  &-order {
+    padding: rem(42) 0;
+
+    &-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: $grid-gutter-width;
+
+      @include media-breakpoint-down(sm) {
+        display: flex;
+      }
+    }
+
+    &-info {
+      width: 100%;
+
+      &-wrapper {
+        position: relative;
+        grid-column-start: 7;
+        grid-column-end: 12;
+        padding: rem(70) 0 rem(82);
+        z-index: 1;
+
+        @include media-breakpoint-down(lg) {
+          grid-column-start: 1;
+          grid-column-end: 7;
+          padding: rem(51) 0 rem(52);
+        }
+
+        @include media-breakpoint-down(sm) {
+          grid-column-start: 1;
+          grid-column-end: 13;
+        }
+      }
+
+      .form-submit {
+        width: 258 / 345 * 100%;
+      }
+    }
+
+    &-img {
+      position: absolute;
+      top: -59%; //196 px
+      left: -13.3%; //155 px
+      display: block;
+      width: 100%;
+      max-width: 785px;
+
+      @include media-breakpoint-down(lg) {
+        max-width: 580px;
+        left: unset;
+        top: -26%;
+        right: 0;
+        z-index: 2;
+      }
+
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+
+    &-outer {
+      @include media-breakpoint-down(sm) {
+        margin-left: -$gutter;
+        margin-right: -$gutter;
+        padding-left: $gutter;
+        padding-right: $gutter;
+      }
+    }
+  }
+}
