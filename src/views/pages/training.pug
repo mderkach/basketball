@@ -40,28 +40,39 @@ block content
           .training__info
             p.training__text 24 июля 2020 г, 18:00
             p.training__text Задача организации, в особенности же глубокий уровень погружения прекрасно подходит для реализации модели развития. В своём стремлении улучшить пользовательский опыт мы упускаем, что диаграммы связей представлены в исключительно положительном свете.
-          +cardsWorkout(false,false,[
-            {
-              src: './assets/img/card-workout.jpg',
-              media: 320
-            }
-          ],'top', 'training__coach')
-          .training__coach-info_wrapper
-            .training__coach-info_text
-              p.training__text Занятия проведет
-              +icon('training__coach-info_icon', 'arrowred')
-            .training__coach-info
-              p.training__text Грищенко Иван
-              p.p женские баскетбольные тренировки и знакомство с баскетболом
-              .cards-workout__socials
-                a.cards-workout__socials-link(href="#")
-                  +icon('cards-workout__socials-icon', 'yt')
-                a.cards-workout__socials-link(href="#")
-                  +icon('cards-workout__socials-icon', 'fb')
-                a.cards-workout__socials-link(href="#")
-                  +icon('cards-workout__socials-icon', 'vk')
-                a.cards-workout__socials-link(href="#")
-                  +icon('cards-workout__socials-icon', 'ig')
+            .training__coach-info_wrapper
+              .training__coach-info_text
+                p.training__text Занятия проведет
+                +icon('training__coach-info_icon', 'arrowred')
+              .training__coach-info
+                p.training__text Грищенко Иван
+                p.p женские баскетбольные тренировки и знакомство с баскетболом
+                .cards-workout__socials
+                  a.cards-workout__socials-link(href="#")
+                    +icon('cards-workout__socials-icon', 'yt')
+                  a.cards-workout__socials-link(href="#")
+                    +icon('cards-workout__socials-icon', 'fb')
+                  a.cards-workout__socials-link(href="#")
+                    +icon('cards-workout__socials-icon', 'vk')
+                  a.cards-workout__socials-link(href="#")
+                    +icon('cards-workout__socials-icon', 'ig')
+          .training__coach_wrapper
+            +cardsWorkout(false,false,[
+              {
+                src: './assets/img/card-workout.jpg',
+                media: 320
+              }
+            ],'top', 'training__coach')
+            .cards-workout__socials
+              a.cards-workout__socials-link(href="#")
+                +icon('cards-workout__socials-icon', 'yt')
+              a.cards-workout__socials-link(href="#")
+                +icon('cards-workout__socials-icon', 'fb')
+              a.cards-workout__socials-link(href="#")
+                +icon('cards-workout__socials-icon', 'vk')
+              a.cards-workout__socials-link(href="#")
+                +icon('cards-workout__socials-icon', 'ig')
+
         .training__info-btn-wrapper
           a.form-submit(href="#") Оставить заявку на участие
   include ../modules/calendar/calendar

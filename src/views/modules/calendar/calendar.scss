@@ -79,8 +79,8 @@
     }
 
     @include media-breakpoint-down(sm) {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 2px !important;
     }
   }
 }

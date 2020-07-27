@@ -1,4 +1,4 @@
-@import './header';
+@import "./header";
 
 .header-inner {
   padding-top: rem(15);
@@ -18,10 +18,7 @@
 
   &__container {
     @include make-container($gutter: $grid-gutter-width);
-    @include make-container-max-widths(
-      $max-widths: $container-max-widths,
-      $breakpoints: $grid-breakpoints
-    );
+    @include make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints);
 
     position: relative;
   }
@@ -66,10 +63,10 @@
       }
 
       @include media-breakpoint-down(sm) {
-        justify-content: flex-start;
-        max-width: 100%;
-        padding-left: $gutter;
-        padding-right: $gutter;
+        justify-content: flex-start !important;
+        max-width: 100% !important;
+        padding-left: $gutter !important;
+        padding-right: $gutter !important;
       }
 
       &-link {
