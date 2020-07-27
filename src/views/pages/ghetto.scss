@@ -9,6 +9,10 @@
     position: relative;
     overflow: hidden;
 
+    .has-info {
+      background-color: #ff0f0f;
+    }
+
     @include media-breakpoint-down(sm) {
       section {
         padding-left: $gutter;

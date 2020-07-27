@@ -5,6 +5,7 @@
     padding: rem(9) rem(5) rem(12);
     background-color: $white;
     border-radius: 0px rem(25) rem(25) rem(25);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     z-index: 1;
 
     &.has-info {
@@ -47,6 +48,10 @@
       .cards-calendar__info-name {
         color: $white;
         transform: scale(0.8) translateX(-12px);
+      }
+
+      @include media-breakpoint-down(sm) {
+        transform: scale(1.2);
       }
     }
 

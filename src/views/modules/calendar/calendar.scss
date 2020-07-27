@@ -71,6 +71,7 @@
     width: 100%;
     margin-top: rem(30);
     padding: 0;
+    transition-property: transform;
 
     @include media-breakpoint-down(lg) {
       grid-template-columns: repeat(6, 1fr);
