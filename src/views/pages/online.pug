@@ -1,0 +1,115 @@
+extends ../layout/inner
+
+block variables
+  - var title = 'basketball';
+  - var description = '';
+  - var slug = 'online'
+  - var pageClass = slug + '-page';
+
+block background
+  +pic(slug + '-background', [
+    {
+      src: './assets/img/bg-inner-online.jpg',
+      media: 320,
+    },
+  ])
+block content
+  section.online
+    +wrapper(slug)
+      +tabs([
+        {
+          isActive: true,
+          label: 'Бросковые тренировки',
+          id: 'throw',
+          header: 'Почему высоким проще играть в баскетбол'
+        },
+        {
+          isActive: false,
+          label: 'Женские тренировки',
+          id: 'women',
+          header: 'Почему высоким проще играть в баскетбол 1'
+        },
+        {
+          isActive: false,
+          label: 'детские тренировки',
+          id: 'child',
+          header: 'Почему высоким проще играть в баскетбол 2'
+        }
+      ])
+        .online__tab-wrapper
+          .online__live
+            p.training__text Онлайн трансляция
+            .online__live-icon
+            span.online__live-time 00:23:25
+          p.training__text Задача организации, в особенности же глубокий уровень погружения прекрасно подходит для реализации модели развития. В своём стремлении улучшить пользовательский опыт мы упускаем, что диаграммы связей представлены в исключительно положительном свете.
+          .online__cams-wrapper
+            .online__cams-item
+              .online__cams-header
+                .online__cams-dot
+                span.online__cams-name Камера 1
+              .online__cams-video-wrapper
+                video
+                  source(src='' type='video/mp4')
+            .online__cams-item
+              .online__cams-header
+                .online__cams-dot
+                span.online__cams-name Камера 2
+              .online__cams-video-wrapper
+                video
+                  source(src='' type='video/mp4')
+            .online__cams-item
+              .online__cams-header
+                .online__cams-dot
+                span.online__cams-name Камера 3
+              .online__cams-video-wrapper
+                video
+                  source(src='' type='video/mp4')
+            .online__cams-item
+              .online__cams-header
+                .online__cams-dot
+                span.online__cams-name Камера 4
+              .online__cams-video-wrapper
+                video
+                  source(src='' type='video/mp4')
+            .online__cams-item
+              .online__cams-header
+                .online__cams-dot
+                span.online__cams-name Камера 5
+              .online__cams-video-wrapper
+                video
+                  source(src='' type='video/mp4')
+            .online__cams-item
+              .online__cams-header
+                .online__cams-dot
+                span.online__cams-name Камера 6
+              .online__cams-video-wrapper
+                video
+                  source(src='' type='video/mp4')
+  section.workout__partners
+    +wrapper(slug)
+      h2.h2 Партнеры
+      +slider('workout__partners-wrapper')
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])
+        +pic('workout__partners-img', [
+          {
+            src: './assets/img/partner.jpg',
+            media: 320
+          }
+        ])
