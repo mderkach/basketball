@@ -4,17 +4,26 @@ const URI = 'http://localhost:4000';
 
 const calendar = {
   body: document.querySelector('.calendar-grid'),
+  btnNext: document.querySelector('.calendar__heading-controls-next'),
+  btnPrev: document.querySelector('.calendar__heading-controls-prev'),
   date: undefined,
   month: undefined,
   year: undefined,
   mode: undefined,
   monthData: undefined,
+  rawData: undefined,
   from: undefined,
   to: undefined,
   dataLength: {
     desktop: 40,
     tablet: 12,
     mobile: 9,
+  },
+  getNext: (data) => {
+    console.log(data);
+  },
+  getPrev: (data) => {
+    console.log(data);
   },
   filterData: (obj) => {
     const currentMonth = calendar.getLocalizedMonthName(calendar.month);
@@ -27,7 +36,7 @@ const calendar = {
         item.month = `${currentMonth} ${itemYear}`;
       }
     });
-
+    calendar.monthData = data;
     calendar.renderCalendar(data);
   },
   getLocalizedMonthName: (name) => {
@@ -38,17 +47,11 @@ const calendar = {
     const month = objDate.toLocaleString(locale, { month: 'long' });
     return month;
   },
-  fetchData: () => {
-    axios
-      .get(`${URI}/data`, {
-        params: {
-          from: calendar.from,
-          to: calendar.to,
-        },
-      })
-      .then((res) => {
-        calendar.filterData(res.data);
-      });
+  fetchData: (params) => {
+    axios.get(`${URI}/data`, params).then((res) => {
+      calendar.rawData = res.data;
+      calendar.filterData(res.data);
+    });
   },
   renderCell: (cell) => {
     const cellBody = document.createElement('div');
@@ -145,6 +148,16 @@ const calendar = {
       });
       window.addEventListener('resize', () => {
         calendar.setMode();
+      });
+
+      calendar.btnNext.addEventListener('click', (e) => {
+        e.preventDefault();
+        calendar.getNext(calendar.rawData);
+      });
+
+      calendar.btnPrev.addEventListener('click', (e) => {
+        e.preventDefault();
+        calendar.getPrev(calendar.rawData);
       });
     }
   },
