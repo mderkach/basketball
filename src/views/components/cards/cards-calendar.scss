@@ -75,6 +75,7 @@
     &-month {
       font-size: rem(14);
       line-height: $mainLineHeight;
+      text-transform: capitalize;
       mix-blend-mode: normal;
     }
 

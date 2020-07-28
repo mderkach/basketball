@@ -1,0 +1,97 @@
+{
+  "data": {
+    "июль": {
+      "year": 2020,
+      "days": [
+                {
+                  "month": false,
+                  "day": "Среда",
+                  "date": "22",
+                  "info": false,
+                  "isWeekend": false
+                },
+                {
+                  "month": false,
+                  "day": "Четверг",
+                  "date": "23",
+                  "info": false,
+                  "isWeekend": false
+                },
+                {
+                  "month": false,
+                  "day": "Пятница",
+                  "date": "24",
+                  "info": [
+                    {
+                      "time": "12:26",
+                      "name": "ЦУЙ фыв"
+                    },
+                    {
+                      "time": "19:30",
+                      "name": "фыв"
+                    }
+                  ],
+                  "isWeekend": false
+                },
+                {
+                  "month": false,
+                  "day": "Суббота",
+                  "date": "25",
+                  "info": false,
+                  "isWeekend": true
+                },
+                {
+                  "month": false,
+                  "day": "Воскресенье",
+                  "date": "26",
+                  "info": false,
+                  "isWeekend": true
+                },
+                {
+                  "month": false,
+                  "day": "Понедельник",
+                  "date": "27",
+                  "info": false,
+                  "isWeekend": false
+                },
+                {
+                  "month": false,
+                  "day": "Вторник",
+                  "date": "28",
+                  "info": false,
+                  "isWeekend": false
+                },
+                {
+                  "month": false,
+                  "day": "Среда",
+                  "date": "29",
+                  "info": [
+                    {
+                      "time": "12:20",
+                      "name": "Иванов Иван"
+                    }
+                  ],
+                  "isWeekend": false
+                },
+                {
+                  "month": false,
+                  "day": "Четверг",
+                  "date": "30",
+                  "info": false,
+                  "isWeekend": false
+                },
+                {
+                  "month": false,
+                  "day": "Пятница",
+                  "date": "31",
+                  "info": false,
+                  "isWeekend": false
+                }
+              ]
+    },
+    "август": {
+      "year": 2020,
+      "days": []
+    }
+  }
+}

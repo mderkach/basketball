@@ -1,43 +1,40 @@
+import axios from 'axios';
+
+const URI = 'http://localhost:4000';
+
 const calendar = {
   body: document.querySelector('.calendar-grid'),
   date: undefined,
+  month: undefined,
+  year: undefined,
   mode: undefined,
-  data: [
-    {
-      month: false,
-      day: 'Воскресенье',
-      date: '26',
-      info: [
-        {
-          time: '12:20',
-          name: 'А б',
-        },
-      ],
-      isWeekend: true,
-    },
-    {
-      month: false,
-      day: 'Понедельник',
-      date: '27',
-      info: false,
-      modifiers: false,
-    },
-    {
-      month: 'Июль',
-      day: 'Вторник',
-      date: '28',
-      info: [
-        {
-          time: '12:26',
-          name: 'ЦУЙ фыв',
-        },
-        {
-          time: '19:30',
-          name: 'фыв',
-        },
-      ],
-    },
-  ],
+  monthData: undefined,
+  filterData: (obj) => {
+    const filteredData = Object.entries(obj);
+    const currentMonth = calendar.getLocalizedMonthName(calendar.month);
+    filteredData.forEach((item) => {
+      const monthName = item[0];
+      const monthData = item[1];
+      if (currentMonth === monthName) {
+        monthData.days[0].month = `${currentMonth} ${monthData.year}`;
+        console.log(monthData.days.length);
+        calendar.renderCalendar(monthData.days);
+      }
+    });
+  },
+  getLocalizedMonthName: (name) => {
+    const objDate = new Date();
+    objDate.setMonth(name);
+
+    const locale = 'ru';
+    const month = objDate.toLocaleString(locale, { month: 'long' });
+    return month;
+  },
+  fetchData: () => {
+    axios.get(`${URI}/data`).then((res) => {
+      calendar.filterData(res.data);
+    });
+  },
   renderCell: (cell) => {
     const cellBody = document.createElement('div');
     cellBody.className = 'cards-calendar';
@@ -98,8 +95,6 @@ const calendar = {
 
     cellBody.appendChild(header);
     cellBody.appendChild(cellInfo);
-
-    console.log(cellBody);
     return cellBody;
   },
   renderCalendar: (array) => {
@@ -121,19 +116,21 @@ const calendar = {
     }
   },
   getMonth: () => {
-    calendar.date = new Date();
+    const date = new Date();
+    calendar.date = date.getDate();
+    calendar.month = date.getMonth();
+    calendar.year = date.getFullYear();
   },
   init: () => {
     if (calendar.body) {
       calendar.getMonth();
+      calendar.fetchData();
       window.addEventListener('load', () => {
         calendar.setMode();
       });
       window.addEventListener('resize', () => {
         calendar.setMode();
       });
-
-      calendar.renderCalendar(calendar.data);
     }
   },
 };
