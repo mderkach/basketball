@@ -9,18 +9,26 @@ const calendar = {
   year: undefined,
   mode: undefined,
   monthData: undefined,
+  from: undefined,
+  to: undefined,
+  dataLength: {
+    desktop: 40,
+    tablet: 12,
+    mobile: 9,
+  },
   filterData: (obj) => {
-    const filteredData = Object.entries(obj);
     const currentMonth = calendar.getLocalizedMonthName(calendar.month);
-    filteredData.forEach((item) => {
-      const monthName = item[0];
-      const monthData = item[1];
-      if (currentMonth === monthName) {
-        monthData.days[0].month = `${currentMonth} ${monthData.year}`;
-        console.log(monthData.days.length);
-        calendar.renderCalendar(monthData.days);
+    const itemYear = obj.year;
+    const data = obj.days;
+
+    data.forEach((item, index) => {
+      if (index === 0) {
+        // eslint-disable-next-line no-param-reassign
+        item.month = `${currentMonth} ${itemYear}`;
       }
     });
+
+    calendar.renderCalendar(data);
   },
   getLocalizedMonthName: (name) => {
     const objDate = new Date();
@@ -31,9 +39,16 @@ const calendar = {
     return month;
   },
   fetchData: () => {
-    axios.get(`${URI}/data`).then((res) => {
-      calendar.filterData(res.data);
-    });
+    axios
+      .get(`${URI}/data`, {
+        params: {
+          from: calendar.from,
+          to: calendar.to,
+        },
+      })
+      .then((res) => {
+        calendar.filterData(res.data);
+      });
   },
   renderCell: (cell) => {
     const cellBody = document.createElement('div');
