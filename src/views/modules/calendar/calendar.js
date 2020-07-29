@@ -27,6 +27,7 @@ const calendar = {
   currentYear: undefined,
   periodFrom: undefined,
   periodTo: undefined,
+  periodText: document.querySelector('.calendar__heading-info'),
   mode: undefined,
   setMode: () => {
     const mobile = window.matchMedia('(min-width: 0px) and (max-width: 767px)');
@@ -129,6 +130,12 @@ const calendar = {
 
     return dayCard;
   },
+  renderPeriod: (from, to) => {
+    const text = `${from.getDate()} ${calendar.monthsNames[from.getMonth()]} - ${to.getDate()} ${
+      calendar.monthsNames[to.getMonth()]
+    } ${to.getFullYear()} г.`;
+    calendar.periodText.innerText = text;
+  },
   getMonth: () => {
     const date = new Date();
     calendar.currentDate = date.getDate();
@@ -153,13 +160,8 @@ const calendar = {
   generateLayout: (month, year) => {
     const result = [];
     let counter = 0;
-    let curDate;
-    if (!calendar.periodFrom) {
-      curDate = new Date(year, month, 1, 0, 0, 0, 0);
-      calendar.periodFrom = curDate;
-    } else {
-      curDate = calendar.periodFrom;
-    }
+    const curDate = new Date(year, month, 1, 0, 0, 0, 0);
+    calendar.periodFrom = curDate;
     const startDatOffset = curDate.getDay() * -1 + 2;
 
     for (let week = 0; week < 6; week += 1) {
@@ -167,13 +169,10 @@ const calendar = {
         const d = new Date(year, month, counter + startDatOffset, 0, 0, 0, 0);
         if (d.getMonth() === month) {
           result.push(calendar.generateCell(d, day));
-        } else {
-          result.push(calendar.generateCell(d, day));
         }
         counter += 1;
       }
     }
-    result.splice(result.length - 2, 2);
     return result;
   },
   renderCalendar: (array) => {
@@ -201,20 +200,31 @@ const calendar = {
         });
 
         calendar.renderCalendar(
-          calendar.generateLayout(calendar.currentMonth + 1, calendar.currentYear),
+          calendar.generateLayout(
+            calendar.periodTo.getMonth() + 1,
+            calendar.periodTo.getFullYear(),
+          ),
         );
+
+        calendar.renderPeriod(calendar.periodFrom, calendar.periodTo);
       });
+
       calendar.btnPrev.addEventListener('click', (e) => {
         e.preventDefault();
+
         calendar.body.querySelectorAll('div').forEach((item) => {
           item.remove();
         });
-        calendar.renderCalendar(
-          calendar.generateLayout(calendar.currentMonth - 1, calendar.currentYear),
-        );
-      });
 
-      console.log(calendar);
+        calendar.renderCalendar(
+          calendar.generateLayout(
+            calendar.periodFrom.getMonth() - 1,
+            calendar.periodFrom.getFullYear(),
+          ),
+        );
+
+        calendar.renderPeriod(calendar.periodFrom, calendar.periodTo);
+      });
     }
   },
 };
