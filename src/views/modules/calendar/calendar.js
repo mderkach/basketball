@@ -215,7 +215,6 @@ const calendar = {
       }
       counter += 1;
     }
-
     return result;
   },
   clearLayout: (clndr) => {
@@ -232,6 +231,51 @@ const calendar = {
     calendar.getFirstDayInLayout();
     calendar.getLastDayInLayout();
   },
+  renderLayout: (month, year, day) => {
+    if (calendar.mode === 'desktop') {
+      calendar.renderCalendar(calendar.generateLayout(month, year));
+    } else {
+      calendar.renderCalendar(calendar.generateMobileLayout(calendar.mode, day, month, year));
+    }
+
+    calendar.renderPeriod(calendar.periodFrom, calendar.periodTo);
+  },
+  switchNext: () => {
+    if (calendar.mode === 'desktop') {
+      let currentMonth = calendar.periodTo.getMonth();
+      let currentYear = calendar.periodTo.getFullYear();
+
+      if (currentMonth === 11) {
+        currentYear += 1;
+        currentMonth = -1;
+      }
+
+      calendar.renderLayout(currentMonth + 1, currentYear, calendar.periodTo.getDate());
+    } else {
+      const currentMonth = calendar.periodTo.getMonth();
+      const currentYear = calendar.periodTo.getFullYear();
+      const currentDate = calendar.periodTo.getDate() + 1;
+      calendar.renderLayout(currentMonth, currentYear, currentDate);
+    }
+  },
+  switchPrev: () => {
+    if (calendar.mode === 'desktop') {
+      let currentMonth = calendar.periodTo.getMonth();
+      let currentYear = calendar.periodTo.getFullYear();
+
+      if (currentMonth === 0) {
+        currentYear -= 1;
+        currentMonth = 12;
+      }
+
+      calendar.renderLayout(currentMonth - 1, currentYear, calendar.periodTo.getDate());
+    } else {
+      const currentMonth = calendar.periodTo.getMonth();
+      const currentYear = calendar.periodTo.getFullYear();
+      const currentDate = calendar.periodTo.getDate() - 1;
+      calendar.renderLayout(currentMonth, currentYear, currentDate);
+    }
+  },
   init: () => {
     if (calendar.body) {
       calendar.clearLayout(calendar.body);
@@ -243,59 +287,35 @@ const calendar = {
       });
 
       window.addEventListener('resize', () => {
+        calendar.clearLayout(calendar.body);
         calendar.setMode();
-        calendar.init();
+        calendar.renderLayout(
+          calendar.periodFrom.getMonth(),
+          calendar.periodFrom.getFullYear(),
+          calendar.periodFrom.getDate(),
+        );
       });
 
-      if (calendar.mode === 'desktop') {
-        calendar.renderCalendar(
-          calendar.generateLayout(calendar.currentMonth, calendar.currentYear),
-        );
-      } else {
-        calendar.renderCalendar(
-          calendar.generateMobileLayout(
-            calendar.mode,
-            calendar.currentDate,
-            calendar.currentMonth,
-            calendar.currentYear,
-          ),
-        );
-      }
+      calendar.renderLayout(calendar.currentMonth, calendar.currentYear, calendar.currentDate);
 
-      calendar.renderPeriod(calendar.periodFrom, calendar.periodTo);
+      calendar.btnNext.addEventListener('click', (e) => {
+        e.preventDefault();
+        calendar.body.querySelectorAll('div').forEach((item) => {
+          item.remove();
+        });
 
-      // calendar.btnNext.addEventListener('click', (e) => {
-      //   e.preventDefault();
-      //   calendar.body.querySelectorAll('div').forEach((item) => {
-      //     item.remove();
-      //   });
+        calendar.switchNext();
+      });
 
-      //   calendar.renderCalendar(
-      //     calendar.generateLayout(
-      //       calendar.periodTo.getMonth() + 1,
-      //       calendar.periodTo.getFullYear(),
-      //     ),
-      //   );
+      calendar.btnPrev.addEventListener('click', (e) => {
+        e.preventDefault();
 
-      //   calendar.renderPeriod(calendar.periodFrom, calendar.periodTo);
-      // });
+        calendar.body.querySelectorAll('div').forEach((item) => {
+          item.remove();
+        });
 
-      // calendar.btnPrev.addEventListener('click', (e) => {
-      //   e.preventDefault();
-
-      //   calendar.body.querySelectorAll('div').forEach((item) => {
-      //     item.remove();
-      //   });
-
-      //   calendar.renderCalendar(
-      //     calendar.generateLayout(
-      //       calendar.periodFrom.getMonth() - 1,
-      //       calendar.periodFrom.getFullYear(),
-      //     ),
-      //   );
-
-      //   calendar.renderPeriod(calendar.periodFrom, calendar.periodTo);
-      // });
+        calendar.switchPrev();
+      });
     }
   },
 };
