@@ -25,6 +25,8 @@ const calendar = {
   currentDate: undefined,
   currentMonth: undefined,
   currentYear: undefined,
+  periodFrom: undefined,
+  periodTo: undefined,
   mode: undefined,
   setMode: () => {
     const mobile = window.matchMedia('(min-width: 0px) and (max-width: 767px)');
@@ -133,10 +135,31 @@ const calendar = {
     calendar.currentMonth = date.getMonth();
     calendar.currentYear = date.getFullYear();
   },
+  getLastDayInLayout: () => {
+    const string = calendar.body.lastChild.querySelector('.cards-calendar-month').innerText;
+    const arr = string.split(' ');
+    const day = calendar.body.lastChild.querySelector('.cards-calendar-date').innerText;
+    const monthIndex = () => {
+      let num = 0;
+      calendar.monthsNames.forEach((month, index) => {
+        if (month === arr[0]) {
+          num = index;
+        }
+      });
+      return num;
+    };
+    calendar.periodTo = new Date(arr[1], monthIndex(), day);
+  },
   generateLayout: (month, year) => {
     const result = [];
     let counter = 0;
-    const curDate = new Date(year, month, 1, 0, 0, 0, 0);
+    let curDate;
+    if (!calendar.periodFrom) {
+      curDate = new Date(year, month, 1, 0, 0, 0, 0);
+      calendar.periodFrom = curDate;
+    } else {
+      curDate = calendar.periodFrom;
+    }
     const startDatOffset = curDate.getDay() * -1 + 2;
 
     for (let week = 0; week < 6; week += 1) {
@@ -157,6 +180,7 @@ const calendar = {
     array.forEach((item) => {
       calendar.body.append(item);
     });
+    calendar.getLastDayInLayout();
   },
   init: () => {
     if (calendar.body) {
@@ -169,6 +193,28 @@ const calendar = {
       });
 
       calendar.renderCalendar(calendar.generateLayout(calendar.currentMonth, calendar.currentYear));
+
+      calendar.btnNext.addEventListener('click', (e) => {
+        e.preventDefault();
+        calendar.body.querySelectorAll('div').forEach((item) => {
+          item.remove();
+        });
+
+        calendar.renderCalendar(
+          calendar.generateLayout(calendar.currentMonth + 1, calendar.currentYear),
+        );
+      });
+      calendar.btnPrev.addEventListener('click', (e) => {
+        e.preventDefault();
+        calendar.body.querySelectorAll('div').forEach((item) => {
+          item.remove();
+        });
+        calendar.renderCalendar(
+          calendar.generateLayout(calendar.currentMonth - 1, calendar.currentYear),
+        );
+      });
+
+      console.log(calendar);
     }
   },
 };
