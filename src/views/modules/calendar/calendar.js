@@ -1,3 +1,7 @@
+import axios from 'axios';
+
+const BASE_URI = 'http://localhost:4000';
+
 const calendar = {
   body: document.querySelector('.calendar-grid'),
   btnNext: document.querySelector('.calendar__heading-controls-next'),
@@ -45,10 +49,13 @@ const calendar = {
   renderCell: (month, day, date, info, isWeekend) => {
     const cellBody = document.createElement('div');
     cellBody.className = 'cards-calendar';
+    cellBody.setAttribute('data-day', day);
+    cellBody.setAttribute('data-date', date);
+    cellBody.setAttribute('data-month', month);
 
     const cellInfo = document.createElement('div');
     cellInfo.className = 'cards-calendar__info';
-
+    cellInfo.setAttribute('data-info', '');
     const header = document.createElement('div');
     header.className = 'cards-calendar__header';
 
@@ -83,7 +90,8 @@ const calendar = {
       info.forEach((item, index) => {
         if (index <= 1) {
           const time = document.createElement('p');
-          const name = document.createElement('p');
+          const name = document.createElement('a');
+          name.setAttribute('href', item.href);
           time.className = 'cards-calendar__info-time';
           name.className = 'cards-calendar__info-name';
 
@@ -276,6 +284,55 @@ const calendar = {
       calendar.renderLayout(currentMonth, currentYear, currentDate);
     }
   },
+  fetchData: (from, to) => {
+    axios
+      .get(`${BASE_URI}/data`, {
+        params: {
+          from: from,
+          to: to,
+        },
+      })
+      .then((res) => {
+        Object.entries(res.data).forEach((item, index) => {
+          if (index === 1) {
+            calendar.responseDays = item[index];
+          } else {
+            calendar.responseYear = item[index + 1];
+          }
+        });
+
+        calendar.applyResponse();
+      });
+  },
+  responseDays: undefined,
+  responseYear: undefined,
+  applyResponse: () => {
+    calendar.responseDays.forEach((item) => {
+      calendar.body
+        .querySelectorAll(`[data-month="${item.month} ${calendar.responseYear}"]`)
+        .forEach((target) => {
+          if (parseInt(target.getAttribute('data-date'), 10) === item.date) {
+            const cellBody = target.querySelector('[data-info]');
+            target.classList.add('has-info');
+            item.info.forEach((guest, index) => {
+              if (index <= 1) {
+                const time = document.createElement('p');
+                const name = document.createElement('a');
+                name.setAttribute('href', guest.href);
+                time.className = 'cards-calendar__info-time';
+                name.className = 'cards-calendar__info-name';
+
+                time.innerText = guest.time;
+                name.innerText = guest.name;
+
+                cellBody.appendChild(time);
+                cellBody.appendChild(name);
+              }
+            });
+          }
+        });
+    });
+  },
   init: () => {
     if (calendar.body) {
       calendar.clearLayout(calendar.body);
@@ -294,9 +351,11 @@ const calendar = {
           calendar.periodFrom.getFullYear(),
           calendar.periodFrom.getDate(),
         );
+        calendar.fetchData(calendar.periodFrom, calendar.periodTo);
       });
 
       calendar.renderLayout(calendar.currentMonth, calendar.currentYear, calendar.currentDate);
+      calendar.fetchData(calendar.periodFrom, calendar.periodTo);
 
       calendar.btnNext.addEventListener('click', (e) => {
         e.preventDefault();
@@ -305,6 +364,7 @@ const calendar = {
         });
 
         calendar.switchNext();
+        calendar.fetchData(calendar.periodFrom, calendar.periodTo);
       });
 
       calendar.btnPrev.addEventListener('click', (e) => {
@@ -315,6 +375,7 @@ const calendar = {
         });
 
         calendar.switchPrev();
+        calendar.fetchData(calendar.periodFrom, calendar.periodTo);
       });
     }
   },

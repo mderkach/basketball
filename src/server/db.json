@@ -3,95 +3,55 @@
     "year": 2020,
     "days": [
       {
-        "month": false,
-        "day": "Четверг",
-        "date": "23",
-        "info": false,
-        "isWeekend": false
-      },
-      {
-        "month": false,
+        "month": "Июль",
         "day": "Пятница",
-        "date": "24",
+        "date": 24,
         "info": [
           {
             "time": "12:26",
-            "name": "ЦУЙ фыв"
+            "name": "ЦУЙ фыв",
+            "href": "#"
           },
           {
             "time": "19:30",
-            "name": "фыв"
+            "name": "фыв",
+            "href": "#"
           }
-        ],
-        "isWeekend": false
+        ]
       },
       {
-        "month": false,
+        "month": "Июль",
         "day": "Суббота",
-        "date": "25",
-        "info": false,
-        "isWeekend": true
-      },
-      {
-        "month": false,
-        "day": "Воскресенье",
-        "date": "26",
-        "info": false,
-        "isWeekend": true
-      },
-      {
-        "month": false,
-        "day": "Понедельник",
-        "date": "27",
-        "info": false,
-        "isWeekend": false
-      },
-      {
-        "month": false,
-        "day": "Вторник",
-        "date": "28",
-        "info": false,
-        "isWeekend": false
-      },
-      {
-        "month": false,
-        "day": "Среда",
-        "date": "29",
+        "date": 25,
         "info": [
           {
-            "time": "12:20",
-            "name": "Иванов Иван"
+            "time": "12:26",
+            "name": "Женя",
+            "href": "#"
+          },
+          {
+            "time": "19:30",
+            "name": "Вова",
+            "href": "#"
           }
-        ],
-        "isWeekend": false
+        ]
       },
       {
-        "month": false,
-        "day": "Четверг",
-        "date": "30",
-        "info": false,
-        "isWeekend": false
-      },
-      {
-        "month": false,
-        "day": "Пятница",
-        "date": "31",
-        "info": false,
-        "isWeekend": false
-      },
-      {
-        "month": "Август 2020",
-        "day": "Суббота",
-        "date": "01",
-        "info": false,
-        "isWeekend": false
-      },
-      {
-        "month": false,
-        "day": "Воскресенье",
-        "date": "02",
-        "info": false,
-        "isWeekend": true
+        "month": "Июль",
+        "day": "Понедельник",
+        "date": 13,
+        "info": [
+          {
+            "time": "12:26",
+            "name": "ЦУЙ фыв",
+            "href": "#"
+          },
+          {
+            "time": "19:30",
+            "name": "фыв",
+            "href": "#"
+          }
+        ]
       }
     ]
   }
