@@ -1,59 +1,45 @@
-import axios from 'axios';
-
-const URI = 'http://localhost:4000';
-
 const calendar = {
   body: document.querySelector('.calendar-grid'),
   btnNext: document.querySelector('.calendar__heading-controls-next'),
   btnPrev: document.querySelector('.calendar__heading-controls-prev'),
-  date: undefined,
-  month: undefined,
-  year: undefined,
-  mode: undefined,
-  monthData: undefined,
-  rawData: undefined,
-  from: undefined,
-  to: undefined,
+  monthsNames: [
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+  ],
+  daysNames: ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
   dataLength: {
     desktop: 40,
     tablet: 12,
     mobile: 9,
   },
-  getNext: (data) => {
-    console.log(data);
-  },
-  getPrev: (data) => {
-    console.log(data);
-  },
-  filterData: (obj) => {
-    const currentMonth = calendar.getLocalizedMonthName(calendar.month);
-    const itemYear = obj.year;
-    const data = obj.days;
+  currentDate: undefined,
+  currentMonth: undefined,
+  currentYear: undefined,
+  mode: undefined,
+  setMode: () => {
+    const mobile = window.matchMedia('(min-width: 0px) and (max-width: 767px)');
+    const tablet = window.matchMedia('(min-width: 768px) and (max-width: 1199px)');
+    const desktop = window.matchMedia('(min-width: 1200px)');
 
-    data.forEach((item, index) => {
-      if (index === 0) {
-        // eslint-disable-next-line no-param-reassign
-        item.month = `${currentMonth} ${itemYear}`;
-      }
-    });
-    calendar.monthData = data;
-    calendar.renderCalendar(data);
+    if (mobile.matches) {
+      calendar.mode = 'mobile';
+    } else if (tablet.matches) {
+      calendar.mode = 'tablet';
+    } else if (desktop.matches) {
+      calendar.mode = 'desktop';
+    }
   },
-  getLocalizedMonthName: (name) => {
-    const objDate = new Date();
-    objDate.setMonth(name);
-
-    const locale = 'ru';
-    const month = objDate.toLocaleString(locale, { month: 'long' });
-    return month;
-  },
-  fetchData: (params) => {
-    axios.get(`${URI}/data`, params).then((res) => {
-      calendar.rawData = res.data;
-      calendar.filterData(res.data);
-    });
-  },
-  renderCell: (cell) => {
+  renderCell: (month, day, date, info, isWeekend) => {
     const cellBody = document.createElement('div');
     cellBody.className = 'cards-calendar';
 
@@ -63,35 +49,35 @@ const calendar = {
     const header = document.createElement('div');
     header.className = 'cards-calendar__header';
 
-    if (cell.month) {
+    if (month) {
       const monthElement = document.createElement('p');
       monthElement.className = 'cards-calendar-month';
-      monthElement.innerText = cell.month;
+      monthElement.innerText = month;
       header.appendChild(monthElement);
     }
 
-    if (cell.day) {
+    if (day) {
       const dayElement = document.createElement('p');
       dayElement.className = 'cards-calendar-day';
-      dayElement.innerText = cell.day;
+      dayElement.innerText = day;
       header.appendChild(dayElement);
     }
 
-    if (cell.date) {
+    if (date) {
       const dateElement = document.createElement('p');
       const dateElementBig = document.createElement('p');
       dateElement.className = 'cards-calendar-date';
       dateElementBig.className = 'cards-calendar-date-big';
-      dateElement.innerText = cell.date;
-      dateElementBig.innerText = cell.date;
+      dateElement.innerText = date;
+      dateElementBig.innerText = date;
 
       header.appendChild(dateElement);
       header.appendChild(dateElementBig);
     }
 
-    if (cell.info) {
+    if (info) {
       cellBody.classList.add('has-info');
-      cell.info.forEach((item, index) => {
+      info.forEach((item, index) => {
         if (index <= 1) {
           const time = document.createElement('p');
           const name = document.createElement('p');
@@ -107,7 +93,7 @@ const calendar = {
       });
     }
 
-    if (cell.isWeekend) {
+    if (isWeekend) {
       cellBody.classList.add('is-weekend');
     }
 
@@ -115,34 +101,66 @@ const calendar = {
     cellBody.appendChild(cellInfo);
     return cellBody;
   },
-  renderCalendar: (array) => {
-    array.forEach((item) => {
-      calendar.body.append(calendar.renderCell(item));
-    });
-  },
-  setMode: () => {
-    const mobile = window.matchMedia('(min-width: 0px) and (max-width: 767px)');
-    const tablet = window.matchMedia('(min-width: 768px) and (max-width: 1199px)');
-    const desktop = window.matchMedia('(min-width: 1200px)');
+  generateCell: (dateObj, day) => {
+    let dayCard = '';
+    const localizedDay = calendar.daysNames[day];
+    const localizedDate = () => {
+      let mnth = '';
+      calendar.monthsNames.forEach((item, index) => {
+        if (index === dateObj.getMonth()) {
+          mnth = item;
+        }
+      });
 
-    if (mobile.matches) {
-      calendar.mode = 'mobile';
-    } else if (tablet.matches) {
-      calendar.mode = 'tablet';
-    } else if (desktop.matches) {
-      calendar.mode = 'desktop';
+      return mnth;
+    };
+    const title = `${localizedDate()} ${dateObj.getFullYear()}`;
+    const date = dateObj.getDate();
+    if (
+      localizedDay === calendar.daysNames[calendar.daysNames.length - 1] ||
+      localizedDay === calendar.daysNames[calendar.daysNames.length - 2]
+    ) {
+      dayCard = calendar.renderCell(title, localizedDay, date, false, true);
+    } else {
+      dayCard = calendar.renderCell(title, localizedDay, date);
     }
+
+    return dayCard;
   },
   getMonth: () => {
     const date = new Date();
-    calendar.date = date.getDate();
-    calendar.month = date.getMonth();
-    calendar.year = date.getFullYear();
+    calendar.currentDate = date.getDate();
+    calendar.currentMonth = date.getMonth();
+    calendar.currentYear = date.getFullYear();
+  },
+  generateLayout: (month, year) => {
+    const result = [];
+    let counter = 0;
+    const curDate = new Date(year, month, 1, 0, 0, 0, 0);
+    const startDatOffset = curDate.getDay() * -1 + 2;
+
+    for (let week = 0; week < 6; week += 1) {
+      for (let day = 0; day < 7; day += 1) {
+        const d = new Date(year, month, counter + startDatOffset, 0, 0, 0, 0);
+        if (d.getMonth() === month) {
+          result.push(calendar.generateCell(d, day));
+        } else {
+          result.push(calendar.generateCell(d, day));
+        }
+        counter += 1;
+      }
+    }
+    result.splice(result.length - 2, 2);
+    return result;
+  },
+  renderCalendar: (array) => {
+    array.forEach((item) => {
+      calendar.body.append(item);
+    });
   },
   init: () => {
     if (calendar.body) {
       calendar.getMonth();
-      calendar.fetchData();
       window.addEventListener('load', () => {
         calendar.setMode();
       });
@@ -150,15 +168,7 @@ const calendar = {
         calendar.setMode();
       });
 
-      calendar.btnNext.addEventListener('click', (e) => {
-        e.preventDefault();
-        calendar.getNext(calendar.rawData);
-      });
-
-      calendar.btnPrev.addEventListener('click', (e) => {
-        e.preventDefault();
-        calendar.getPrev(calendar.rawData);
-      });
+      calendar.renderCalendar(calendar.generateLayout(calendar.currentMonth, calendar.currentYear));
     }
   },
 };
