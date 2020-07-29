@@ -143,25 +143,43 @@ const calendar = {
     calendar.currentYear = date.getFullYear();
   },
   getLastDayInLayout: () => {
-    const string = calendar.body.lastChild.querySelector('.cards-calendar-month').innerText;
-    const arr = string.split(' ');
-    const day = calendar.body.lastChild.querySelector('.cards-calendar-date').innerText;
-    const monthIndex = () => {
-      let num = 0;
-      calendar.monthsNames.forEach((month, index) => {
-        if (month === arr[0]) {
-          num = index;
-        }
-      });
-      return num;
-    };
-    calendar.periodTo = new Date(arr[1], monthIndex(), day);
+    if (calendar.body.lastChild) {
+      const string = calendar.body.lastChild.querySelector('.cards-calendar-month').innerText;
+      const arr = string.split(' ');
+      const day = calendar.body.lastChild.querySelector('.cards-calendar-date').innerText;
+      const monthIndex = () => {
+        let num = 0;
+        calendar.monthsNames.forEach((month, index) => {
+          if (month === arr[0]) {
+            num = index;
+          }
+        });
+        return num;
+      };
+      calendar.periodTo = new Date(arr[1], monthIndex(), day);
+    }
+  },
+  getFirstDayInLayout: () => {
+    if (calendar.body.firstChild) {
+      const string = calendar.body.firstChild.querySelector('.cards-calendar-month').innerText;
+      const arr = string.split(' ');
+      const day = calendar.body.firstChild.querySelector('.cards-calendar-date').innerText;
+      const monthIndex = () => {
+        let num = 0;
+        calendar.monthsNames.forEach((month, index) => {
+          if (month === arr[0]) {
+            num = index;
+          }
+        });
+        return num;
+      };
+      calendar.periodFrom = new Date(arr[1], monthIndex(), day);
+    }
   },
   generateLayout: (month, year) => {
     const result = [];
     let counter = 0;
     const curDate = new Date(year, month, 1, 0, 0, 0, 0);
-    calendar.periodFrom = curDate;
     const startDatOffset = curDate.getDay() * -1 + 2;
 
     for (let week = 0; week < 6; week += 1) {
@@ -175,56 +193,109 @@ const calendar = {
     }
     return result;
   },
+  generateMobileLayout: (mode, date, month, year) => {
+    const result = [];
+    let counter = 0;
+    let layoutLength = 0;
+
+    if (mode === 'tablet') {
+      layoutLength = calendar.dataLength.tablet;
+    }
+
+    if (mode === 'mobile') {
+      layoutLength = calendar.dataLength.mobile;
+    }
+
+    for (let length = 0; length < layoutLength; length += 1) {
+      const d = new Date(year, month, counter + date, 0, 0, 0, 0);
+      if (d.getMonth() === month) {
+        result.push(calendar.generateCell(d, date));
+      } else {
+        result.push(calendar.generateCell(d, date));
+      }
+      counter += 1;
+    }
+
+    return result;
+  },
+  clearLayout: (clndr) => {
+    if (clndr.querySelectorAll('div')) {
+      clndr.querySelectorAll('div').forEach((item) => {
+        item.remove();
+      });
+    }
+  },
   renderCalendar: (array) => {
     array.forEach((item) => {
       calendar.body.append(item);
     });
+    calendar.getFirstDayInLayout();
     calendar.getLastDayInLayout();
   },
   init: () => {
     if (calendar.body) {
+      calendar.clearLayout(calendar.body);
+      calendar.setMode();
       calendar.getMonth();
+
       window.addEventListener('load', () => {
         calendar.setMode();
       });
+
       window.addEventListener('resize', () => {
         calendar.setMode();
+        calendar.init();
       });
 
-      calendar.renderCalendar(calendar.generateLayout(calendar.currentMonth, calendar.currentYear));
-
-      calendar.btnNext.addEventListener('click', (e) => {
-        e.preventDefault();
-        calendar.body.querySelectorAll('div').forEach((item) => {
-          item.remove();
-        });
-
+      if (calendar.mode === 'desktop') {
         calendar.renderCalendar(
-          calendar.generateLayout(
-            calendar.periodTo.getMonth() + 1,
-            calendar.periodTo.getFullYear(),
+          calendar.generateLayout(calendar.currentMonth, calendar.currentYear),
+        );
+      } else {
+        calendar.renderCalendar(
+          calendar.generateMobileLayout(
+            calendar.mode,
+            calendar.currentDate,
+            calendar.currentMonth,
+            calendar.currentYear,
           ),
         );
+      }
 
-        calendar.renderPeriod(calendar.periodFrom, calendar.periodTo);
-      });
+      calendar.renderPeriod(calendar.periodFrom, calendar.periodTo);
 
-      calendar.btnPrev.addEventListener('click', (e) => {
-        e.preventDefault();
+      // calendar.btnNext.addEventListener('click', (e) => {
+      //   e.preventDefault();
+      //   calendar.body.querySelectorAll('div').forEach((item) => {
+      //     item.remove();
+      //   });
 
-        calendar.body.querySelectorAll('div').forEach((item) => {
-          item.remove();
-        });
+      //   calendar.renderCalendar(
+      //     calendar.generateLayout(
+      //       calendar.periodTo.getMonth() + 1,
+      //       calendar.periodTo.getFullYear(),
+      //     ),
+      //   );
 
-        calendar.renderCalendar(
-          calendar.generateLayout(
-            calendar.periodFrom.getMonth() - 1,
-            calendar.periodFrom.getFullYear(),
-          ),
-        );
+      //   calendar.renderPeriod(calendar.periodFrom, calendar.periodTo);
+      // });
 
-        calendar.renderPeriod(calendar.periodFrom, calendar.periodTo);
-      });
+      // calendar.btnPrev.addEventListener('click', (e) => {
+      //   e.preventDefault();
+
+      //   calendar.body.querySelectorAll('div').forEach((item) => {
+      //     item.remove();
+      //   });
+
+      //   calendar.renderCalendar(
+      //     calendar.generateLayout(
+      //       calendar.periodFrom.getMonth() - 1,
+      //       calendar.periodFrom.getFullYear(),
+      //     ),
+      //   );
+
+      //   calendar.renderPeriod(calendar.periodFrom, calendar.periodTo);
+      // });
     }
   },
 };
