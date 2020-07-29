@@ -139,8 +139,22 @@ const calendar = {
     return dayCard;
   },
   renderPeriod: (from, to) => {
-    const text = `${from.getDate()} ${calendar.monthsNames[from.getMonth()]} - ${to.getDate()} ${
-      calendar.monthsNames[to.getMonth()]
+    const monthsNames = [
+      'Января',
+      'Февраля',
+      'Марта',
+      'Апреля',
+      'Мая',
+      'Июня',
+      'Июля',
+      'Августа',
+      'Сентября',
+      'Октября',
+      'Ноября',
+      'Декабря',
+    ];
+    const text = `${from.getDate()} ${monthsNames[from.getMonth()]} - ${to.getDate()} ${
+      monthsNames[to.getMonth()]
     } ${to.getFullYear()} г.`;
     calendar.periodText.innerText = text;
   },
