@@ -203,19 +203,37 @@
     padding: rem(78 - 42) 0 rem(54);
 
     &-wrapper {
-      // display: grid;
-      // grid-template-columns: repeat(4, 1fr);
-      // gap: $grid-gutter-width;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0 rem(63);
       padding: rem(34) 0;
+
+      @include media-breakpoint-down(lg) {
+        gap: 0 rem(30);
+      }
+
+      @include media-breakpoint-down(sm) {
+        display: flex;
+        gap: 0 !important;
+        justify-content: space-between;
+        width: 100%;
+      }
     }
 
     &-img {
       position: relative;
-      flex-shrink: 0;
+      // flex-shrink: 0;
+      display: flex;
+      justify-content: center;
       width: 100%;
 
+      @include media-breakpoint-down(sm) {
+        width: auto;
+      }
+
       img {
-        width: 100%;
+        // width: 100%;
+        object-fit: cover;
       }
     }
   }

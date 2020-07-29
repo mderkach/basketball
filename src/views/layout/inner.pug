@@ -15,6 +15,67 @@ html(lang='ru')
     block header
       include ../modules/header/headerInner
     block content
+    block partners
+      section.workout__partners
+        +wrapper(slug)
+          h2.h2 Партнеры
+          .workout__partners-wrapper
+            +pic('workout__partners-img', [
+              {
+                src: './assets/img/partner-1.png',
+                media: 1200
+              },
+              {
+                src: './assets/img/partner-1-768.png',
+                media: 768
+              },
+              {
+                src: './assets/img/partner-1-320.png',
+                media: 320
+              }
+            ])
+            +pic('workout__partners-img', [
+              {
+                src: './assets/img/partner-2.png',
+                media: 1200
+              },
+              {
+                src: './assets/img/partner-2-768.png',
+                media: 768
+              },
+              {
+                src: './assets/img/partner-2-320.png',
+                media: 320
+              }
+            ])
+            +pic('workout__partners-img', [
+              {
+                src: './assets/img/partner-1.png',
+                media: 1200
+              },
+              {
+                src: './assets/img/partner-1-768.png',
+                media: 768
+              },
+              {
+                src: './assets/img/partner-1-320.png',
+                media: 320
+              }
+            ])
+            +pic('workout__partners-img', [
+              {
+                src: './assets/img/partner-2.png',
+                media: 1200
+              },
+              {
+                src: './assets/img/partner-2-768.png',
+                media: 768
+              },
+              {
+                src: './assets/img/partner-2-320.png',
+                media: 320
+              }
+            ])
     block footer
       include ../modules/footer/footer
     block script

@@ -105,7 +105,6 @@ const calendar = {
     return cellBody;
   },
   generateCell: (dateObj, day) => {
-    console.log(day);
     let dayCard = '';
     const localizedDay = calendar.daysNames[day];
     const localizedDate = () => {
