@@ -105,6 +105,7 @@ const calendar = {
     return cellBody;
   },
   generateCell: (dateObj, day) => {
+    console.log(day);
     let dayCard = '';
     const localizedDay = calendar.daysNames[day];
     const localizedDate = () => {
@@ -208,11 +209,11 @@ const calendar = {
 
     for (let length = 0; length < layoutLength; length += 1) {
       const d = new Date(year, month, counter + date, 0, 0, 0, 0);
-      if (d.getMonth() === month) {
-        result.push(calendar.generateCell(d, date));
-      } else {
-        result.push(calendar.generateCell(d, date));
+      let dayIndex = d.getDay() - 1;
+      if (dayIndex < 0) {
+        dayIndex = 6;
       }
+      result.push(calendar.generateCell(d, dayIndex));
       counter += 1;
     }
     return result;
