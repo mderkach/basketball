@@ -240,8 +240,8 @@ const calendar = {
     return result;
   },
   clearLayout: (clndr) => {
-    if (clndr.querySelectorAll('div')) {
-      clndr.querySelectorAll('div').forEach((item) => {
+    if (clndr.querySelectorAll('.cards-calendar')) {
+      clndr.querySelectorAll('.cards-calendar').forEach((item) => {
         item.remove();
       });
     }
@@ -281,6 +281,15 @@ const calendar = {
     }
   },
   switchPrev: () => {
+    let offset = 0;
+    if (calendar.mode === 'tablet') {
+      offset = calendar.dataLength.tablet;
+    }
+
+    if (calendar.mode === 'mobile') {
+      offset = calendar.dataLength.mobile;
+    }
+
     if (calendar.mode === 'desktop') {
       let currentMonth = calendar.periodTo.getMonth();
       let currentYear = calendar.periodTo.getFullYear();
@@ -292,9 +301,15 @@ const calendar = {
 
       calendar.renderLayout(currentMonth - 1, currentYear, calendar.periodTo.getDate());
     } else {
-      const currentMonth = calendar.periodTo.getMonth();
-      const currentYear = calendar.periodTo.getFullYear();
-      const currentDate = calendar.periodTo.getDate() - 1;
+      let currentMonth = calendar.periodFrom.getMonth();
+      let currentYear = calendar.periodFrom.getFullYear();
+      const currentDate = new Date(calendar.periodFrom).getDate() - offset;
+
+      if (currentMonth === 0) {
+        currentYear -= 1;
+        currentMonth = 12;
+      }
+
       calendar.renderLayout(currentMonth, currentYear, currentDate);
     }
   },
@@ -350,6 +365,20 @@ const calendar = {
         });
     });
   },
+  setActive: () => {
+    const rendered = calendar.body.querySelectorAll('.cards-calendar');
+    rendered.forEach((item) => {
+      if (calendar.mode !== 'destop') {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          rendered.forEach((card) => card.classList.remove('is-active'));
+          if (!item.classList.contains('is-active')) {
+            item.classList.add('is-active');
+          }
+        });
+      }
+    });
+  },
   init: () => {
     if (calendar.body) {
       calendar.clearLayout(calendar.body);
@@ -368,10 +397,12 @@ const calendar = {
           calendar.periodFrom.getFullYear(),
           calendar.periodFrom.getDate(),
         );
+        calendar.setActive();
         calendar.fetchData(calendar.periodFrom, calendar.periodTo);
       });
 
       calendar.renderLayout(calendar.currentMonth, calendar.currentYear, calendar.currentDate);
+      calendar.setActive();
       calendar.fetchData(calendar.periodFrom, calendar.periodTo);
 
       calendar.btnNext.addEventListener('click', (e) => {
