@@ -171,6 +171,7 @@
     &-btn-wrapper {
       display: flex;
       justify-content: center;
+      width: 100%;
       padding: rem(75) 0 rem(62);
 
       @include media-breakpoint-down(lg) {

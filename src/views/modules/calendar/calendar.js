@@ -316,6 +316,9 @@ const calendar = {
         });
 
         calendar.applyResponse();
+      })
+      .catch((e) => {
+        console.log(e);
       });
   },
   responseDays: undefined,

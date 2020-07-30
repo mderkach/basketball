@@ -16,63 +16,43 @@ block background
 block content
   section.training
     +wrapper(slug)
-      +tabs([
-        {
-          isActive: true,
-          label: 'Бросковые тренировки',
-          id: 'throw',
-          header: 'Страница тренировки'
-        },
-        {
-          isActive: false,
-          label: 'Женские тренировки',
-          id: 'women',
-          header: 'Страница тренировки 1'
-        },
-        {
-          isActive: false,
-          label: 'детские тренировки',
-          id: 'child',
-          header: 'Страница тренировки 2'
-        }
-      ])
-        .training__info_wrapper
-          .training__info
-            p.training__text 24 июля 2020 г, 18:00
-            p.training__text Задача организации, в особенности же глубокий уровень погружения прекрасно подходит для реализации модели развития. В своём стремлении улучшить пользовательский опыт мы упускаем, что диаграммы связей представлены в исключительно положительном свете.
-            .training__coach-info_wrapper
-              .training__coach-info_text
-                p.training__text Занятия проведет
-                +icon('training__coach-info_icon', 'arrowred')
-              .training__coach-info
-                p.training__text Грищенко Иван
-                p.p женские баскетбольные тренировки и знакомство с баскетболом
-                .cards-workout__socials
-                  a.cards-workout__socials-link(href="#")
-                    +icon('cards-workout__socials-icon', 'yt')
-                  a.cards-workout__socials-link(href="#")
-                    +icon('cards-workout__socials-icon', 'fb')
-                  a.cards-workout__socials-link(href="#")
-                    +icon('cards-workout__socials-icon', 'vk')
-                  a.cards-workout__socials-link(href="#")
-                    +icon('cards-workout__socials-icon', 'ig')
-          .training__coach_wrapper
-            +cardsWorkout(false,false,[
-              {
-                src: './assets/img/card-workout.jpg',
-                media: 320
-              }
-            ],'top', 'training__coach')
-            .cards-workout__socials
-              a.cards-workout__socials-link(href="#")
-                +icon('cards-workout__socials-icon', 'yt')
-              a.cards-workout__socials-link(href="#")
-                +icon('cards-workout__socials-icon', 'fb')
-              a.cards-workout__socials-link(href="#")
-                +icon('cards-workout__socials-icon', 'vk')
-              a.cards-workout__socials-link(href="#")
-                +icon('cards-workout__socials-icon', 'ig')
+      .training__info_wrapper
+        .training__info
+          p.training__text 24 июля 2020 г, 18:00
+          p.training__text Задача организации, в особенности же глубокий уровень погружения прекрасно подходит для реализации модели развития. В своём стремлении улучшить пользовательский опыт мы упускаем, что диаграммы связей представлены в исключительно положительном свете.
+          .training__coach-info_wrapper
+            .training__coach-info_text
+              p.training__text Занятия проведет
+              +icon('training__coach-info_icon', 'arrowred')
+            .training__coach-info
+              p.training__text Грищенко Иван
+              p.p женские баскетбольные тренировки и знакомство с баскетболом
+              .cards-workout__socials
+                a.cards-workout__socials-link(href="#")
+                  +icon('cards-workout__socials-icon', 'yt')
+                a.cards-workout__socials-link(href="#")
+                  +icon('cards-workout__socials-icon', 'fb')
+                a.cards-workout__socials-link(href="#")
+                  +icon('cards-workout__socials-icon', 'vk')
+                a.cards-workout__socials-link(href="#")
+                  +icon('cards-workout__socials-icon', 'ig')
+        .training__coach_wrapper
+          +cardsWorkout(false,false,[
+            {
+              src: './assets/img/card-workout.jpg',
+              media: 320
+            }
+          ],'top', 'training__coach')
+          .cards-workout__socials
+            a.cards-workout__socials-link(href="#")
+              +icon('cards-workout__socials-icon', 'yt')
+            a.cards-workout__socials-link(href="#")
+              +icon('cards-workout__socials-icon', 'fb')
+            a.cards-workout__socials-link(href="#")
+              +icon('cards-workout__socials-icon', 'vk')
+            a.cards-workout__socials-link(href="#")
+              +icon('cards-workout__socials-icon', 'ig')
 
-        .training__info-btn-wrapper
-          a.form-submit(href="#") Оставить заявку на участие
+      .training__info-btn-wrapper
+        a.form-submit(href="#") Оставить заявку на участие
   include ../modules/calendar/calendar
