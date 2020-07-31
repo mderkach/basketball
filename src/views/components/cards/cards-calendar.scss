@@ -2,15 +2,31 @@
   &-calendar {
     position: relative;
     width: 100%;
+    min-height: rem(170);
     padding: rem(9) rem(5) rem(12);
     background-color: #e0e0e0;
     border-radius: 0px rem(25) rem(25) rem(25);
     transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     z-index: 1;
 
-    &.has-info {
-      background-color: #27ae60;
+    &.is-weekend {
+      background-color: $white;
 
+      .cards-calendar-day,
+      .cards-calendar-date,
+      .cards-calendar-month,
+      .cards-calendar__info-time,
+      .cards-calendar__info-name {
+        color: #000;
+      }
+
+      .cards-calendar-big {
+        text-align: center;
+        color: rgba($color: #000, $alpha: 0.05);
+      }
+    }
+
+    &.has-info {
       .cards-calendar-day,
       .cards-calendar-date,
       .cards-calendar-month,
@@ -25,21 +41,20 @@
       }
     }
 
-    &.is-weekend {
-      background-color: $white !important;
+    &.training-general {
+      background-color: #27ae60;
+    }
 
-      .cards-calendar-day,
-      .cards-calendar-date,
-      .cards-calendar-month,
-      .cards-calendar__info-time,
-      .cards-calendar__info-name {
-        color: #000;
-      }
+    &.training-ghetto {
+      background-color: #ff0f0f;
+    }
 
-      .cards-calendar-big {
-        text-align: center;
-        color: rgba($color: #000, $alpha: 0.05);
-      }
+    &.training-mass {
+      background-color: #36a9e1;
+    }
+
+    &.training-world {
+      background-color: #ff7a00;
     }
 
     &.is-active {
@@ -80,12 +95,15 @@
       font-size: rem(14);
       line-height: $mainLineHeight;
       text-transform: capitalize;
+      font-feature-settings: 'cpsp' on;
       mix-blend-mode: normal;
     }
 
     &-day {
+      font-size: rem(12);
       color: #000;
       text-transform: uppercase;
+      font-feature-settings: 'cpsp' on;
       mix-blend-mode: normal;
     }
 
@@ -96,6 +114,7 @@
       line-height: $mainLineHeight;
       text-transform: uppercase;
       color: #000;
+      font-feature-settings: 'cpsp' on;
       mix-blend-mode: normal;
 
       &-big {
@@ -114,7 +133,6 @@
     &__info {
       position: relative;
       height: 100%;
-      min-height: rem(90);
       z-index: 0;
 
       &-time,
@@ -130,7 +148,7 @@
 
       &-name {
         display: block;
-        margin-bottom: rem(2);
+        margin-bottom: rem(4);
       }
     }
   }

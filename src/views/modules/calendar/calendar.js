@@ -8,8 +8,6 @@ if (process.env.NODE_ENV === 'production') {
   BASE_URI = 'http://localhost:4000';
 }
 
-console.log(BASE_URI);
-
 const calendar = {
   body: document.querySelector('.calendar-grid'),
   btnNext: document.querySelector('.calendar__heading-controls-next'),
@@ -54,7 +52,7 @@ const calendar = {
       calendar.mode = 'desktop';
     }
   },
-  renderCell: (month, day, date, info, isWeekend) => {
+  renderCell: (month, day, date, isWeekend) => {
     const cellBody = document.createElement('div');
     cellBody.className = 'cards-calendar';
     cellBody.setAttribute('data-day', day);
@@ -93,22 +91,22 @@ const calendar = {
       header.appendChild(dateElementBig);
     }
 
-    if (info) {
-      cellBody.classList.add('has-info');
-      info.forEach((item) => {
-        const time = document.createElement('p');
-        const name = document.createElement('a');
-        name.setAttribute('href', item.href);
-        time.className = 'cards-calendar__info-time';
-        name.className = 'cards-calendar__info-name';
+    // if (info) {
+    //   cellBody.classList.add('has-info');
+    //   info.forEach((item) => {
+    //     const time = document.createElement('p');
+    //     const name = document.createElement('a');
+    //     name.setAttribute('href', item.href);
+    //     time.className = 'cards-calendar__info-time';
+    //     name.className = 'cards-calendar__info-name';
 
-        time.innerText = item.time;
-        name.innerText = item.name;
+    //     time.innerText = item.time;
+    //     name.innerText = item.name;
 
-        cellInfo.appendChild(time);
-        cellInfo.appendChild(name);
-      });
-    }
+    //     cellInfo.appendChild(time);
+    //     cellInfo.appendChild(name);
+    //   });
+    // }
 
     if (isWeekend) {
       cellBody.classList.add('is-weekend');
@@ -119,10 +117,10 @@ const calendar = {
     return cellBody;
   },
   generateCell: (dateObj, day) => {
-    let dayCard = '';
+    let dayCard;
     const localizedDay = calendar.daysNames[day];
     const localizedDate = () => {
-      let mnth = '';
+      let mnth;
       calendar.monthsNames.forEach((item, index) => {
         if (index === dateObj.getMonth()) {
           mnth = item;
@@ -137,7 +135,7 @@ const calendar = {
       localizedDay === calendar.daysNames[calendar.daysNames.length - 1] ||
       localizedDay === calendar.daysNames[calendar.daysNames.length - 2]
     ) {
-      dayCard = calendar.renderCell(title, localizedDay, date, false, true);
+      dayCard = calendar.renderCell(title, localizedDay, date, true);
     } else {
       dayCard = calendar.renderCell(title, localizedDay, date);
     }
@@ -172,9 +170,9 @@ const calendar = {
   },
   getLastDayInLayout: () => {
     if (calendar.body.lastChild) {
-      const string = calendar.body.lastChild.querySelector('.cards-calendar-month').innerText;
+      const string = calendar.body.lastChild.getAttribute('data-month');
       const arr = string.split(' ');
-      const day = calendar.body.lastChild.querySelector('.cards-calendar-date').innerText;
+      const day = calendar.body.lastChild.getAttribute('data-date');
       const monthIndex = () => {
         let num = 0;
         calendar.monthsNames.forEach((month, index) => {
@@ -189,9 +187,9 @@ const calendar = {
   },
   getFirstDayInLayout: () => {
     if (calendar.body.firstChild) {
-      const string = calendar.body.firstChild.querySelector('.cards-calendar-month').innerText;
+      const string = calendar.body.firstChild.getAttribute('data-month');
       const arr = string.split(' ');
-      const day = calendar.body.firstChild.querySelector('.cards-calendar-date').innerText;
+      const day = calendar.body.firstChild.getAttribute('data-date');
       const monthIndex = () => {
         let num = 0;
         calendar.monthsNames.forEach((month, index) => {
@@ -253,7 +251,10 @@ const calendar = {
     }
   },
   renderCalendar: (array) => {
-    array.forEach((item) => {
+    array.forEach((item, index) => {
+      if (index !== 0 && parseInt(item.getAttribute('data-date'), 10) !== 1) {
+        item.querySelector('.cards-calendar-month').remove();
+      }
       calendar.body.append(item);
     });
     calendar.getFirstDayInLayout();
@@ -345,25 +346,29 @@ const calendar = {
   responseYear: undefined,
   applyResponse: () => {
     calendar.responseDays.forEach((item) => {
-      console.log(item);
       calendar.body
         .querySelectorAll(`[data-month="${item.month} ${calendar.responseYear}"]`)
         .forEach((target) => {
           if (parseInt(target.getAttribute('data-date'), 10) === item.date) {
             const cellBody = target.querySelector('[data-info]');
             target.classList.add('has-info');
-            item.info.forEach((guest) => {
-              const time = document.createElement('p');
-              const name = document.createElement('a');
-              name.setAttribute('href', guest.href);
-              time.className = 'cards-calendar__info-time';
-              name.className = 'cards-calendar__info-name';
+            target.classList.add(`training-${item.type}`);
 
-              time.innerText = guest.time;
-              name.innerText = guest.name;
+            item.info.forEach((guest, index) => {
+              if (index !== 3) {
+                const time = document.createElement('p');
+                const name = document.createElement('a');
+                name.setAttribute('href', guest.href);
+                name.setAttribute('name', guest.href);
+                time.className = 'cards-calendar__info-time';
+                name.className = 'cards-calendar__info-name';
 
-              cellBody.appendChild(time);
-              cellBody.appendChild(name);
+                time.innerText = guest.time;
+                name.innerText = guest.name;
+
+                cellBody.appendChild(time);
+                cellBody.appendChild(name);
+              }
             });
           }
         });
@@ -372,7 +377,7 @@ const calendar = {
   setActive: () => {
     const rendered = calendar.body.querySelectorAll('.cards-calendar');
     rendered.forEach((item) => {
-      if (calendar.mode !== 'destop') {
+      if (calendar.mode === 'tablet' || calendar.mode === 'mobile') {
         item.addEventListener('click', (e) => {
           e.preventDefault();
           rendered.forEach((card) => card.classList.remove('is-active'));
@@ -382,6 +387,17 @@ const calendar = {
         });
       }
     });
+  },
+  onResize: () => {
+    calendar.clearLayout(calendar.body);
+    calendar.setMode();
+    calendar.renderLayout(
+      calendar.periodFrom.getMonth(),
+      calendar.periodFrom.getFullYear(),
+      calendar.periodFrom.getDate(),
+    );
+    calendar.setActive();
+    calendar.fetchData(calendar.periodFrom, calendar.periodTo);
   },
   init: () => {
     if (calendar.body) {
@@ -394,15 +410,7 @@ const calendar = {
       });
 
       window.addEventListener('resize', () => {
-        calendar.clearLayout(calendar.body);
-        calendar.setMode();
-        calendar.renderLayout(
-          calendar.periodFrom.getMonth(),
-          calendar.periodFrom.getFullYear(),
-          calendar.periodFrom.getDate(),
-        );
-        calendar.setActive();
-        calendar.fetchData(calendar.periodFrom, calendar.periodTo);
+        calendar.onResize();
       });
 
       calendar.renderLayout(calendar.currentMonth, calendar.currentYear, calendar.currentDate);

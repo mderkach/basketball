@@ -4,8 +4,8 @@
     "days": [
       {
         "month": "Июль",
-        "day": "Пятница",
-        "date": 24,
+        "day": "Среда",
+        "date": 1,
         "info": [
           {
             "time": "12:26",
@@ -22,7 +22,73 @@
             "name": "Активити",
             "href": "#"
           }
-        ]
+          ,
+          {
+            "time": "asdasd",
+            "name": "ивити",
+            "href": "#"
+          }
+        ],
+        "type": "ghetto"
+      },
+      {
+        "month": "Июль",
+        "day": "Четверг",
+        "date": 2,
+        "info": [
+          {
+            "time": "20:30",
+            "name": "Активити",
+            "href": "#"
+          }
+        ],
+        "type": "mass"
+      },
+      {
+        "month": "Июль",
+        "day": "Пятница",
+        "date": 24,
+        "info": [
+          {
+            "time": "12:26",
+            "name": "ЦУЙ фыв",
+            "href": "#"
+          },
+          {
+            "time": "19:30",
+            "name": "фыв",
+            "href": "#"
+          },
+          {
+            "time": "20:30",
+            "name": "Активити",
+            "href": "http://test14.softmg.ru/"
+          }
+        ],
+        "type": "world"
+      },
+      {
+        "month": "Июль",
+        "day": "Суббота",
+        "date": 25,
+        "info": [
+          {
+            "time": "12:26",
+            "name": "ЦУЙ фыв",
+            "href": "#"
+          },
+          {
+            "time": "19:30",
+            "name": "фыв",
+            "href": "#"
+          },
+          {
+            "time": "20:30",
+            "name": "Активити",
+            "href": "http://test14.softmg.ru/"
+          }
+        ],
+        "type": "general"
       }
     ]
   }
