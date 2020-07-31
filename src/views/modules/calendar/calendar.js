@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-const BASE_URI = 'http://localhost:4000';
+let BASE_URI;
+
+if (process.env.NODE_ENV === 'production') {
+  BASE_URI = '/api/calendar/';
+} else {
+  BASE_URI = 'http://localhost:4000';
+}
+
+console.log(BASE_URI);
 
 const calendar = {
   body: document.querySelector('.calendar-grid'),
@@ -87,20 +95,18 @@ const calendar = {
 
     if (info) {
       cellBody.classList.add('has-info');
-      info.forEach((item, index) => {
-        if (index <= 1) {
-          const time = document.createElement('p');
-          const name = document.createElement('a');
-          name.setAttribute('href', item.href);
-          time.className = 'cards-calendar__info-time';
-          name.className = 'cards-calendar__info-name';
+      info.forEach((item) => {
+        const time = document.createElement('p');
+        const name = document.createElement('a');
+        name.setAttribute('href', item.href);
+        time.className = 'cards-calendar__info-time';
+        name.className = 'cards-calendar__info-name';
 
-          time.innerText = item.time;
-          name.innerText = item.name;
+        time.innerText = item.time;
+        name.innerText = item.name;
 
-          cellInfo.appendChild(time);
-          cellInfo.appendChild(name);
-        }
+        cellInfo.appendChild(time);
+        cellInfo.appendChild(name);
       });
     }
 
@@ -329,7 +335,6 @@ const calendar = {
             calendar.responseYear = item[index + 1];
           }
         });
-
         calendar.applyResponse();
       })
       .catch((e) => {
@@ -340,26 +345,25 @@ const calendar = {
   responseYear: undefined,
   applyResponse: () => {
     calendar.responseDays.forEach((item) => {
+      console.log(item);
       calendar.body
         .querySelectorAll(`[data-month="${item.month} ${calendar.responseYear}"]`)
         .forEach((target) => {
           if (parseInt(target.getAttribute('data-date'), 10) === item.date) {
             const cellBody = target.querySelector('[data-info]');
             target.classList.add('has-info');
-            item.info.forEach((guest, index) => {
-              if (index <= 1) {
-                const time = document.createElement('p');
-                const name = document.createElement('a');
-                name.setAttribute('href', guest.href);
-                time.className = 'cards-calendar__info-time';
-                name.className = 'cards-calendar__info-name';
+            item.info.forEach((guest) => {
+              const time = document.createElement('p');
+              const name = document.createElement('a');
+              name.setAttribute('href', guest.href);
+              time.className = 'cards-calendar__info-time';
+              name.className = 'cards-calendar__info-name';
 
-                time.innerText = guest.time;
-                name.innerText = guest.name;
+              time.innerText = guest.time;
+              name.innerText = guest.name;
 
-                cellBody.appendChild(time);
-                cellBody.appendChild(name);
-              }
+              cellBody.appendChild(time);
+              cellBody.appendChild(name);
             });
           }
         });

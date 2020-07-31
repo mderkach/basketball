@@ -163,7 +163,7 @@ module.exports = {
         sourceMap: false, // Must be set to true if using source-maps in production
         terserOptions: {
           compress: {
-            drop_console: true,
+            drop_console: false,
           },
           output: {
             comments: false,

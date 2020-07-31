@@ -90,7 +90,7 @@
     }
 
     &-date {
-      margin-bottom: rem(14);
+      margin-bottom: rem(7);
       font-weight: bold;
       font-size: rem(18);
       line-height: $mainLineHeight;
@@ -113,7 +113,8 @@
 
     &__info {
       position: relative;
-      height: rem(90);
+      height: 100%;
+      min-height: rem(90);
       z-index: 0;
 
       &-time,
@@ -124,12 +125,12 @@
       }
 
       &-time {
-        margin-bottom: rem(3);
+        margin-bottom: rem(2);
       }
 
       &-name {
         display: block;
-        margin-bottom: rem(8);
+        margin-bottom: rem(2);
       }
     }
   }
