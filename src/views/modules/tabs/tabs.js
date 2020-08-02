@@ -39,9 +39,9 @@ const tabs = {
 
         // set active next anchor
         if (btn.classList.contains('tabs-menu__button_next')) {
-          if (tabs.currentAnchor.nextSibling) {
-            tabs.currentAnchor.nextSibling.classList.add('is-active');
-            tabs.setCurrentTab(tabs.tabs, tabs.currentAnchor.nextSibling);
+          if (tabs.currentAnchor.nextElementSibling) {
+            tabs.currentAnchor.nextElementSibling.classList.add('is-active');
+            tabs.setCurrentTab(tabs.tabs, tabs.currentAnchor.nextElementSibling);
           } else {
             tabs.navAnchors[0].classList.add('is-active');
             tabs.setCurrentTab(tabs.tabs, tabs.navAnchors[0]);
@@ -50,9 +50,9 @@ const tabs = {
 
         // set active prev anchor
         if (btn.classList.contains('tabs-menu__button_prev')) {
-          if (tabs.currentAnchor.previousSibling) {
-            tabs.currentAnchor.previousSibling.classList.add('is-active');
-            tabs.setCurrentTab(tabs.tabs, tabs.currentAnchor.previousSibling);
+          if (tabs.currentAnchor.previousElementSibling) {
+            tabs.currentAnchor.previousElementSibling.classList.add('is-active');
+            tabs.setCurrentTab(tabs.tabs, tabs.currentAnchor.previousElementSibling);
           } else {
             tabs.navAnchors[tabs.navAnchors.length - 1].classList.add('is-active');
             tabs.setCurrentTab(tabs.tabs, tabs.navAnchors[tabs.navAnchors.length - 1]);

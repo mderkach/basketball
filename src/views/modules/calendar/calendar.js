@@ -324,8 +324,11 @@ const calendar = {
     axios
       .get(`${BASE_URI}/data`, {
         params: {
-          from: from,
-          to: to,
+          filter: {
+            location: window.location.href,
+            date_from: from,
+            date_to: to,
+          },
         },
       })
       .then((res) => {

@@ -5,7 +5,7 @@ const ImagePath = 'src/assets/img/';
 const OutputPath = 'dist/assets/img';
 const ConvertImgs = imagemin([`${ImagePath}*.{jpg,png}`], {
   destination: OutputPath,
-  plugins: [webp({ lossless: true, quality: 100 })],
+  plugins: [webp({ lossless: true, quality: 75 })],
 });
 
 Fs.readdirSync(ImagePath, ConvertImgs)
