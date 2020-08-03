@@ -322,7 +322,7 @@ const calendar = {
   },
   fetchData: (from, to) => {
     axios
-      .get(`${BASE_URI}/data`, {
+      .get(`${BASE_URI}/data/`, {
         params: {
           filter: {
             location: window.location.href,
