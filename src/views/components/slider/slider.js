@@ -7,7 +7,7 @@ const slider = {
   buildSlider: (container) => {
     const selector = `.${container.querySelector('.slider-container').classList[1]}`;
     const sldr = new Swiper(selector, {
-      loop: true,
+      loop: false,
       spaceBetween: 30,
       speed: 400,
       wrapperClass: container.querySelector('.slider-wrapper').classList[0],
@@ -27,6 +27,7 @@ const slider = {
       navigation: {
         nextEl: container.querySelector('.slider-next'),
         prevEl: container.querySelector('.slider-prev'),
+        disabledClass: 'is-disabled',
       },
     });
 
