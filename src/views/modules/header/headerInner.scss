@@ -1,4 +1,4 @@
-@import "./header";
+@import './header';
 
 .header-inner {
   padding-top: rem(15);
@@ -18,7 +18,10 @@
 
   &__container {
     @include make-container($gutter: $grid-gutter-width);
-    @include make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints);
+    @include make-container-max-widths(
+      $max-widths: $container-max-widths,
+      $breakpoints: $grid-breakpoints
+    );
 
     position: relative;
   }
@@ -39,6 +42,11 @@
 
     .msport {
       width: rem(134);
+      height: rem(42);
+    }
+
+    .sbasket {
+      width: rem(104);
       height: rem(42);
     }
   }
