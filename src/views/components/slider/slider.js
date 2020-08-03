@@ -29,6 +29,19 @@ const slider = {
         prevEl: container.querySelector('.slider-prev'),
         disabledClass: 'is-disabled',
       },
+      on: {
+        init: function () {
+          if (this.isBeginning && this.isEnd) {
+            this.wrapperEl.parentElement.parentElement.querySelectorAll('button').forEach((btn) => {
+              btn.classList.add('is-hidden');
+            });
+          } else {
+            this.wrapperEl.parentElement.parentElement.querySelectorAll('button').forEach((btn) => {
+              btn.classList.remove('is-hidden');
+            });
+          }
+        },
+      },
     });
 
     return sldr;
