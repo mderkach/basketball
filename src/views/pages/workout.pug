@@ -28,12 +28,6 @@ block content
       +tabs([
         {
           isActive: true,
-          label: 'Бросковые тренировки',
-          id: 'throw',
-          header: 'Наши тренеры'
-        },
-        {
-          isActive: false,
           label: 'Женские тренировки',
           id: 'women',
           header: 'Женщины'
@@ -43,12 +37,54 @@ block content
           label: 'детские тренировки',
           id: 'child',
           header: 'Дети'
-        }
+        },
+        {
+          isActive: false,
+          label: 'контроль мяча и дрибблинг',
+          id: 'dribble',
+          header: 'Дети'
+        },
+        {
+          isActive: false,
+          label: 'Бросковые тренировки',
+          id: 'throw',
+          header: 'Наши тренеры'
+        },
+        {
+          isActive: false,
+          label: 'офп и силовая тренировка',
+          id: 'ofp',
+          header: 'Дети'
+        },
+        {
+          isActive: false,
+          label: 'онлайн-зарядка',
+          id: 'online',
+          header: 'Дети'
+        },
+        {
+          isActive: false,
+          label: 'интенсив',
+          id: 'intensive',
+          header: 'Дети'
+        },
       ])
         +slider('tabs-tab__content-outer', 'tabs-tab__content')
           +cardsWorkout('Грищенко Иван ','женские баскетбольные тренировки и знакомство с баскетболом',[
             {
               src: './assets/img/card-workout.jpg',
+              media: 320
+            }
+          ],'top')
+          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+            {
+              src: './assets/img/card-placeholder.jpg',
+              media: 320
+            }
+          ],'bot')
+          +cardsWorkout('Ивановский Константин','заслуженный тренер по <br /> баскетболу',[
+            {
+              src: './assets/img/card-placeholder.jpg',
               media: 320
             }
           ],'top')

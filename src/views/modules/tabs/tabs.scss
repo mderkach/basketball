@@ -16,11 +16,17 @@
     border-bottom: 1px solid $white;
 
     &__button {
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       width: rem(38);
       height: rem(30);
+
+      &.is-disabled {
+        opacity: 0.5;
+        pointer-events: none;
+      }
     }
 
     &__icon {
@@ -31,44 +37,35 @@
       }
 
       &_next {
-        top: rem(-6);
+        top: -6;
+        right: 4px;
+      }
+
+      &_prev {
+        top: 2px;
+        left: 4px;
       }
     }
 
     &__link {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-weight: 900;
       font-size: rem(24);
       line-height: $mainLineHeight;
+      text-align: center;
       text-transform: uppercase;
       color: $white;
 
       @include media-breakpoint-down(lg) {
-        display: none;
         font-size: rem(21);
-        max-width: 290 / 720 * 100%;
         text-align: center;
-        pointer-events: none;
       }
 
       &.is-active {
         font-size: rem(30);
-
-        @include media-breakpoint-down(lg) {
-          display: block;
-
-          + a {
-            display: block;
-          }
-        }
-
-        @include media-breakpoint-down(sm) {
-          display: block;
-          max-width: 100%;
-
-          + a {
-            display: none !important;
-          }
-        }
       }
 
       &:hover {
@@ -77,22 +74,17 @@
       }
 
       &_wrapper {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0 rem(20);
+        @extend .swiper-container;
+      }
 
-        @include media-breakpoint-down(lg) {
-          justify-content: center;
-        }
+      &_outer {
+        @extend .swiper-wrapper;
       }
     }
   }
 
   &-tab {
     position: absolute;
-    // display: none;
     top: 0;
     right: -10000px;
     width: 100%;
@@ -125,30 +117,9 @@
 
     &__content {
       @extend .swiper-wrapper;
-      // display: grid;
-      // grid-template-columns: repeat(4, 1fr);
-      // grid-template-rows: 1fr;
-      // gap: $grid-gutter-width;
-      // width: 100%;
+
       padding-top: rem(30);
       padding-bottom: rem(50);
-
-      // @include media-breakpoint-down(lg) {
-      //   grid-template-columns: repeat(2, 1fr);
-      //   // position: relative;
-      //   // box-sizing: content-box;
-      //   // display: flex;
-      //   // width: 100%;
-      //   // height: auto;
-      //   // margin: 0 auto;
-      //   // transition-property: transform;
-      //   // gap: unset;
-      //   // z-index: 1;
-      // }
-
-      // @include media-breakpoint-down(sm) {
-      //   grid-template-columns: 1fr;
-      // }
 
       &-outer {
         @extend .swiper-container;
