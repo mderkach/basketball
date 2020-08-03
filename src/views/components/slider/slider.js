@@ -31,6 +31,7 @@ const slider = {
       },
       on: {
         init: function () {
+          this.navigation.update();
           if (this.isBeginning && this.isEnd) {
             this.wrapperEl.parentElement.parentElement.querySelectorAll('button').forEach((btn) => {
               btn.classList.add('is-hidden');
