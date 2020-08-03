@@ -201,6 +201,7 @@
   }
 
   &__partners {
+    display: flex;
     @include media-breakpoint-down(lg) {
       order: 3;
     }
@@ -213,10 +214,11 @@
       margin-top: rem(16);
     }
 
-    picture {
-      &:not(:last-child) {
-        margin-right: rem(46);
-      }
+    .msport {
+      width: rem(134);
+      height: rem(42);
+
+      margin-right: rem(46);
     }
   }
 }
