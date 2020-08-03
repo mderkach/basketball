@@ -5,34 +5,37 @@ Swiper.use([Navigation]);
 const tabs = {
   navBtns: document.querySelectorAll('.tabs-menu__button'),
   navAnchors: document.querySelectorAll('.tabs-menu__link'),
-  navSlider: new Swiper('.tabs-menu__link_wrapper', {
-    init: false,
-    slidesPerView: 3,
-    wrapperClass: 'tabs-menu__link_outer',
-    slideClass: 'tabs-menu__link',
-    speed: 400,
-    navigation: {
-      nextEl: document
-        .querySelector('.tabs-menu__link_wrapper')
-        .parentElement.querySelector('.tabs-menu__button_next'),
-      prevEl: document
-        .querySelector('.tabs-menu__link_wrapper')
-        .parentElement.querySelector('.tabs-menu__button_prev'),
-      disabledClass: 'is-disabled',
-    },
-    breakpoints: {
-      1200: {
-        slidesPerView: 3,
+  navSlider: () => {
+    const sldr = new Swiper('.tabs-menu__link_wrapper', {
+      init: false,
+      slidesPerView: 3,
+      wrapperClass: 'tabs-menu__link_outer',
+      slideClass: 'tabs-menu__link',
+      speed: 400,
+      navigation: {
+        nextEl: document
+          .querySelector('.tabs-menu__link_wrapper')
+          .parentElement.querySelector('.tabs-menu__button_next'),
+        prevEl: document
+          .querySelector('.tabs-menu__link_wrapper')
+          .parentElement.querySelector('.tabs-menu__button_prev'),
+        disabledClass: 'is-disabled',
       },
-      576: {
-        slidesPerView: 2,
+      breakpoints: {
+        1200: {
+          slidesPerView: 3,
+        },
+        576: {
+          slidesPerView: 2,
+        },
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
       },
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 0,
-      },
-    },
-  }),
+    });
+    return sldr;
+  },
   currentAnchor: undefined,
   tabs: document.querySelectorAll('.tabs-tab'),
   getCurrentTab: (arr) => {
@@ -111,12 +114,12 @@ const tabs = {
     });
   },
   init: () => {
-    if (tabs.navAnchors) {
+    if (tabs.tabs.length) {
       tabs.getCurrentTab(tabs.navAnchors);
       tabs.setCurrentTab(tabs.tabs, tabs.currentAnchor);
       tabs.changeTab();
       tabs.anchorClick();
-      tabs.navSlider.init();
+      tabs.navSlider().init();
     }
   },
 };
