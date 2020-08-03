@@ -91,23 +91,6 @@ const calendar = {
       header.appendChild(dateElementBig);
     }
 
-    // if (info) {
-    //   cellBody.classList.add('has-info');
-    //   info.forEach((item) => {
-    //     const time = document.createElement('p');
-    //     const name = document.createElement('a');
-    //     name.setAttribute('href', item.href);
-    //     time.className = 'cards-calendar__info-time';
-    //     name.className = 'cards-calendar__info-name';
-
-    //     time.innerText = item.time;
-    //     name.innerText = item.name;
-
-    //     cellInfo.appendChild(time);
-    //     cellInfo.appendChild(name);
-    //   });
-    // }
-
     if (isWeekend) {
       cellBody.classList.add('is-weekend');
     }
@@ -363,6 +346,7 @@ const calendar = {
                 const name = document.createElement('a');
                 name.setAttribute('href', guest.href);
                 name.setAttribute('name', guest.href);
+                name.setAttribute('onclick', `window.location.href='${guest.href}'`);
                 time.className = 'cards-calendar__info-time';
                 name.className = 'cards-calendar__info-name';
 
