@@ -96,7 +96,7 @@
 
     &-link {
       display: block;
-      margin-right: rem(46);
+      margin-right: rem(32);
       color: $white;
 
       &:hover {
@@ -110,7 +110,7 @@
         margin-bottom: rem(19);
       }
 
-      &:nth-child(n + 3) {
+      &:nth-child(n + 4) {
         display: none;
 
         @include media-breakpoint-down(lg) {
