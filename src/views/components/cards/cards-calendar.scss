@@ -63,24 +63,24 @@
       filter: drop-shadow(4px 4px 25px rgba(0, 0, 0, 0.5));
       z-index: 2;
 
-      .cards-calendar-day,
-      .cards-calendar-date,
-      .cards-calendar-month {
-        // color: $white;
-        transform: scale(0.8) translateX(-12px);
-      }
+      // .cards-calendar-day,
+      // .cards-calendar-date,
+      // .cards-calendar-month {
+      //   // color: $white;
+      //   transform: scale(0.8) translateX(-12px);
+      // }
 
       .cards-calendar-big {
         text-align: center;
         color: rgba($color: $white, $alpha: 0.05);
-        transform: scale(0.8) translateX(-12px);
+        // transform: scale(0.8) translateX(-12px);
       }
 
-      .cards-calendar__info-time,
-      .cards-calendar__info-name {
-        // color: $white;
-        transform: scale(0.8) translateX(-12px);
-      }
+      // .cards-calendar__info-time,
+      // .cards-calendar__info-name {
+      //   // color: $white;
+      //   transform: scale(0.8) translateX(-12px);
+      // }
 
       @include media-breakpoint-down(sm) {
         transform: scale(1.2);
@@ -95,7 +95,7 @@
       font-size: rem(14);
       line-height: $mainLineHeight;
       text-transform: capitalize;
-      font-feature-settings: 'cpsp' on;
+      font-feature-settings: "cpsp" on;
       mix-blend-mode: normal;
     }
 
@@ -103,7 +103,7 @@
       font-size: rem(12);
       color: #000;
       text-transform: uppercase;
-      font-feature-settings: 'cpsp' on;
+      font-feature-settings: "cpsp" on;
       mix-blend-mode: normal;
     }
 
@@ -114,7 +114,7 @@
       line-height: $mainLineHeight;
       text-transform: uppercase;
       color: #000;
-      font-feature-settings: 'cpsp' on;
+      font-feature-settings: "cpsp" on;
       mix-blend-mode: normal;
 
       &-big {
