@@ -36,6 +36,11 @@
     max-width: rem(724);
     margin-left: auto;
     margin-right: auto;
+
+    .msport {
+      width: rem(134);
+      height: rem(42);
+    }
   }
 
   &__nav {
