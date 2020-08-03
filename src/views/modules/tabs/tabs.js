@@ -58,29 +58,6 @@ const tabs = {
       item.classList.remove('is-active');
     });
   },
-  // prevAll: (elm) => {
-  //   const result = [];
-  //   let from = elm;
-  //   while (from) {
-  //     result.push(from);
-  //     from = from.previousElementSibling;
-  //   }
-
-  //   let offset = 0;
-
-  //   result.forEach((link, index) => {
-  //     if (index !== 0) {
-  //       const { width } = link.getBoundingClientRect();
-  //       console.log(link.getBoundingClientRect());
-  //       offset += Math.floor(width);
-  //     }
-  //   });
-
-  //   tabs.navAnchors.forEach((item) => {
-  //     // eslint-disable-next-line no-param-reassign
-  //     item.style.transform = `translateX(${-offset - 15}px)`;
-  //   });
-  // },
   changeTab: () => {
     tabs.navBtns.forEach((btn) => {
       btn.addEventListener('click', (e) => {
@@ -134,11 +111,13 @@ const tabs = {
     });
   },
   init: () => {
-    tabs.getCurrentTab(tabs.navAnchors);
-    tabs.setCurrentTab(tabs.tabs, tabs.currentAnchor);
-    tabs.changeTab();
-    tabs.anchorClick();
-    tabs.navSlider.init();
+    if (tabs.navAnchors) {
+      tabs.getCurrentTab(tabs.navAnchors);
+      tabs.setCurrentTab(tabs.tabs, tabs.currentAnchor);
+      tabs.changeTab();
+      tabs.anchorClick();
+      tabs.navSlider.init();
+    }
   },
 };
 
