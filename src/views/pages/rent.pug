@@ -1,0 +1,76 @@
+extends ../layout/inner
+
+block variables
+  - var title = 'basketball';
+  - var description = '';
+  - var slug = 'rent'
+  - var pageClass = slug + '-page';
+
+block background
+  +pic(slug + '-background', [
+    {
+      src: './assets/img/bg-inner-ghetto.jpg',
+      media: 1200
+    },
+    {
+      src: './assets/img/bg-inner-ghetto-768.jpg',
+      media: 768,
+    },
+    {
+      src: './assets/img/bg-inner-ghetto-320.jpg',
+      media: 320,
+    },
+  ])
+block content
+  section.workout__rent.black-bg
+    +wrapper(slug)
+      h2.h2 Аренда оборудования
+      .rent__grid.workout__rent-outer
+        +cardRent('Брусья', [
+            {
+              src: './assets/img/rent1.jpg',
+              media: 320
+            }
+          ])
+        +cardRent('Брусья', [
+          {
+            src: './assets/img/rent1.jpg',
+            media: 320
+          }
+        ])
+        +cardRent('Шведская стенка', [
+          {
+            src: './assets/img/rent2.jpg',
+            media: 320
+          }
+        ])
+        +cardRent('Брусья', [
+          {
+            src: './assets/img/rent1.jpg',
+            media: 320
+          }
+        ])
+        +cardRent('Брусья', [
+          {
+            src: './assets/img/rent1.jpg',
+            media: 320
+          }
+        ])
+        +cardRent('Брусья', [
+          {
+            src: './assets/img/rent1.jpg',
+            media: 320
+          }
+        ])
+        +cardRent('Шведская стенка', [
+          {
+            src: './assets/img/rent2.jpg',
+            media: 320
+          }
+        ])
+        +cardRent('Брусья', [
+          {
+            src: './assets/img/rent1.jpg',
+            media: 320
+          }
+        ])
