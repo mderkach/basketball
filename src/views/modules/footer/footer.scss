@@ -60,6 +60,10 @@
       @include media-breakpoint-down(lg) {
         // margin-bottom: rem(18);
         margin-bottom: rem(7);
+
+        .hide-mobile {
+          display: none;
+        }
       }
 
       @include media-breakpoint-down(sm) {
