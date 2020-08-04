@@ -1,19 +1,16 @@
 .footer {
   position: relative;
   width: 100%;
-  padding: rem(21) 0 rem(24);
+  padding: rem(10) 0 rem(10);
   background-color: rgba($color: #110f02, $alpha: 0.75);
 
-  @include media-breakpoint-down(lg) {
-    padding: rem(20) 0;
-  }
+  // @include media-breakpoint-down(lg) {
+  //   padding: rem(20) 0;
+  // }
 
   &__container {
     @include make-container($gutter: $grid-gutter-width);
-    @include make-container-max-widths(
-      $max-widths: $container-max-widths,
-      $breakpoints: $grid-breakpoints
-    );
+    @include make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints);
   }
 
   &__row {
@@ -57,10 +54,12 @@
 
     &-text {
       color: $white;
-      margin-bottom: rem(26);
+      // margin-bottom: rem(26);
+      margin-bottom: rem(14);
 
       @include media-breakpoint-down(lg) {
-        margin-bottom: rem(18);
+        // margin-bottom: rem(18);
+        margin-bottom: rem(7);
       }
 
       @include media-breakpoint-down(sm) {
@@ -110,7 +109,8 @@
 
       @include media-breakpoint-down(sm) {
         width: 100%;
-        margin: rem(30) 0 rem(20);
+        // margin: rem(30) 0 rem(20);
+        margin: rem(10) 0;
 
         a {
           width: 100%;
