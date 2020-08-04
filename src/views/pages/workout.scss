@@ -229,6 +229,8 @@
 
       @include media-breakpoint-down(sm) {
         width: auto;
+        max-width: rem(115);
+        max-height: rem(51);
       }
 
       img {
