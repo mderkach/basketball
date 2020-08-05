@@ -24,6 +24,12 @@ block background
 block content
   section.workout
     +wrapper(slug)
+      +pic('workout__tabs-bg', [
+        {
+          src: './assets/img/paralax.png',
+          media: 320
+        }
+      ])
       p.workout__text В рамках проекта «Баскетбол XXl» пройдет цикл специальных тренировок – Streetbasket Lab. Streetbasket Lab – это бесплатные тренировки для разного уровня подготовки, возраста и пола с ведущими тренерами Москвы и России.
       +tabs([
         {

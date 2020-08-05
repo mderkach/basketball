@@ -36,6 +36,7 @@
 
   &__row {
     @include make-row();
+    position: relative;
   }
 
   &__text {
@@ -241,6 +242,23 @@
         object-fit: cover;
         max-height: 100%;
       }
+    }
+  }
+
+  &__tabs-bg {
+    position: absolute;
+    bottom: 0;
+    right: 5%;
+    z-index: 0;
+
+    @include media-breakpoint-down(lg) {
+      bottom: 15%;
+      right: 50%;
+      transform: translateX(50%);
+    }
+
+    @include media-breakpoint-down(sm) {
+      display: none;
     }
   }
 }
