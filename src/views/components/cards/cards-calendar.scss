@@ -14,7 +14,11 @@
 
       .cards-calendar-day,
       .cards-calendar-date,
-      .cards-calendar-month,
+      .cards-calendar-month {
+        color: #ff0f0f !important;
+        font-weight: bold;
+      }
+
       .cards-calendar__info-time,
       .cards-calendar__info-name {
         color: #000;

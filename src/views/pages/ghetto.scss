@@ -11,6 +11,12 @@
 
     .has-info {
       background-color: #ff0f0f;
+
+      .cards-calendar-day,
+      .cards-calendar-date,
+      .cards-calendar-month {
+        color: $white !important;
+      }
     }
 
     @include media-breakpoint-down(sm) {
