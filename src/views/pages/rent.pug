@@ -74,3 +74,26 @@ block content
             media: 320
           }
         ])
+
+  section.workout__order
+    .workout__order-outer.black-bg
+      +wrapper(slug)
+        .workout__order-inner
+          +pic('workout__order-img', [
+            {
+              src: './assets/img/ball.png',
+              media: 1200,
+            },
+            {
+              src: './assets/img/ball-768.png',
+              media: 320,
+            },
+          ])
+          .workout__order-form-wrapper
+            form.form(action="#" method="post")
+              h2.form-header.h2 Комментарии
+              p.form-descr.p Укажите время и количество человек
+              input.form-input.p(type="text" name="name" placeholder="Ваше имя" onfocus="this.placeholder=''" onblur="this.placeholder='Ваше имя'")
+              input.form-input.p(type="email" name="mail" placeholder="Ваш email" onfocus="this.placeholder=''" onblur="this.placeholder='Ваш email'")
+              input.form-input.p(type="text" name="comment" placeholder="Укажите время и количество человек" onfocus="this.placeholder=''" onblur="this.placeholder='Укажите время и количество человек'")
+              input.form-submit(type="submit" name="submit" value="Оставить заявку на аренду")
