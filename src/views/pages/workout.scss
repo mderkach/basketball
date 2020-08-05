@@ -174,7 +174,7 @@
 
     &-img {
       position: absolute;
-      top: -59%; //196 px
+      top: -45%; //196 px
       left: -13.3%; //155 px
       display: block;
       width: 100%;
@@ -183,7 +183,7 @@
       @include media-breakpoint-down(lg) {
         max-width: 585px;
         left: unset;
-        top: -12%;
+        top: -7%;
         right: -11%;
       }
 
