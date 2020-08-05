@@ -250,6 +250,7 @@
     bottom: 0;
     right: 5%;
     z-index: 0;
+    opacity: 0.35;
 
     @include media-breakpoint-down(lg) {
       bottom: 15%;
