@@ -209,7 +209,7 @@
     &-wrapper {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0 rem(63);
+      gap: 0 rem(30);
       width: 100%;
       padding: rem(34) 0;
 
@@ -231,6 +231,7 @@
       display: flex;
       justify-content: center;
       width: 100%;
+      max-height: rem(120);
 
       @include media-breakpoint-down(sm) {
         width: auto;
@@ -240,7 +241,7 @@
 
       img {
         // width: 100%;
-        object-fit: cover;
+        // object-fit: cover;
         max-height: 100%;
       }
     }
